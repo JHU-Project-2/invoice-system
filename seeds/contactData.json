@@ -6,5 +6,29 @@
 		"phone": "4105811234",
 		"address_id": 1,
 		"company_id": 1
+	},
+	{
+		"id": 2,
+		"name": "Mike",
+		"email": "mike@example.com",
+		"phone": "5551234567",
+		"address_id": 1,
+		"company_id": 1
+	},
+	{
+		"id": 3,
+		"name": "Ben",
+		"email": "ben@example.com",
+		"phone": "8884569524",
+		"address_id": 1,
+		"company_id": 1
+	},
+	{
+		"id": 4,
+		"name": "Alex",
+		"email": "alex@example.com",
+		"phone": "6025551234",
+		"address_id": 1,
+		"company_id": 1
 	}
 ]
