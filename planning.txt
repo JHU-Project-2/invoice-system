@@ -1,4 +1,4 @@
-New Client
+Company
     - Company Name
 
 Contact Info
@@ -22,3 +22,22 @@ New Product
 Order
     - client id
     - product id
+
+
+
+address_1: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        address_2: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        city: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        state: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
