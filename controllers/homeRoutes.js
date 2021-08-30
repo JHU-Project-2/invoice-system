@@ -38,7 +38,7 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 // ! FRONT END ROUTES
-router.get('/dashboard', async (req, res) => {
+router.get('/dashboard', withAuth, async (req, res) => {
   try {
     // Get all projects and JOIN with user data
     const companyData = await Company.findAll({
