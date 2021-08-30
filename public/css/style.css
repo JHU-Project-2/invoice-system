@@ -22,19 +22,3 @@ header, .project:not(:last-child) {
   font-weight: bold;
   margin-left: -5px;
 }
-
-.jumbotron {
-  background-color: blue;
-  color: white;
-}
-
-.card {
-  margin: auto;
-  padding: 20px;
-  width: 33%;
-  display: inline-block;
-}
-
-.create-button {
-  width: 50%;
-}
