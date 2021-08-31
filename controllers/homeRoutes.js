@@ -1,5 +1,5 @@
 const sequelize = require("../config/connection");
-const { User, Company } = require("../models");
+const { User, Company, Contact } = require("../models");
 const router = require("express").Router();
 const withAuth = require('../utils/auth');
 
@@ -63,4 +63,39 @@ router.get('/dashboard', withAuth, async (req, res) => {
   }
 });
 
+router.get("/company/:id", (req, res) => {
+  Company.findOne({
+    where: {
+      id: req.params.id,
+    },
+    attributes: ["id", "name"],
+    include: [
+      {
+        model: Contact,
+        attributes: [
+          "id",
+          "name",
+        ],
+      },
+    ],
+  })
+    .then((companyData) => {
+      if (!companyData) {
+        res.status(404).json({ message: "No post found with this id" });
+        return;
+      }
+      const company = companyData.get({ plain: true });
+      console.log(company);
+      res.render("company", {
+        company,
+        logged_in: req.session.logged_in,
+        username: req.session.username,
+        title: "Company",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 module.exports = router;

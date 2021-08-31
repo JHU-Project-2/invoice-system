@@ -9,7 +9,8 @@
 	},
 	{
 		"name": "Three's Company",
-		"contact_id": 3
+		"contact_id": 3,
+		"user_id": 1
 	},
 	{
 		"name": "Fourth, LLC",
