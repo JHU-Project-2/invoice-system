@@ -21,7 +21,8 @@ router.get('/', async (req, res) => {
     // Pass serialized data and session flag into template
     res.render('homepage', {
       companies,
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
+      title: "Home"
     });
   } catch (err) {
     res.status(500).json(err);
@@ -56,7 +57,8 @@ router.get('/dashboard', withAuth, async (req, res) => {
     // Pass serialized data and session flag into template
     res.render('dashboard', {
       companies,
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
+      title: "Dashboard"
     });
   } catch (err) {
     res.status(500).json(err);
@@ -75,6 +77,8 @@ router.get("/company/:id", (req, res) => {
         attributes: [
           "id",
           "name",
+          "email",
+          "phone"
         ],
       },
     ],
