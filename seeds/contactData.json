@@ -13,7 +13,7 @@
 		"email": "mike@example.com",
 		"phone": "5551234567",
 		"address_id": 1,
-		"company_id": 1
+		"company_id": 2
 	},
 	{
 		"id": 3,
@@ -21,7 +21,7 @@
 		"email": "ben@example.com",
 		"phone": "8884569524",
 		"address_id": 1,
-		"company_id": 1
+		"company_id": 3
 	},
 	{
 		"id": 4,
@@ -29,6 +29,6 @@
 		"email": "alex@example.com",
 		"phone": "6025551234",
 		"address_id": 1,
-		"company_id": 1
+		"company_id": 4
 	}
 ]
