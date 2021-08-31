@@ -32,10 +32,10 @@ Contact.init(
         },
         company_id: {
             type: DataTypes.INTEGER,
-            // references: {
-            //     model: 'company',
-            //     key: 'id',
-            // },
+            references: {
+                model: 'company',
+                key: 'id',
+            },
         },
     },
     {

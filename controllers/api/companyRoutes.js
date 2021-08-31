@@ -1,8 +1,9 @@
-const router = require('express').Router();
-const { Company } = require('../../models');
-const withAuth = require('../../utils/auth');
+const router = require("express").Router();
+const { Company, Contact } = require("../../models");
+const withAuth = require("../../utils/auth");
 
-router.post('/', withAuth, async (req, res) => {
+
+router.post("/", withAuth, async (req, res) => {
   try {
     const newCompany = await Company.create({
       ...req.body,
@@ -15,7 +16,7 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
-router.delete('/:id', withAuth, async (req, res) => {
+router.delete("/:id", withAuth, async (req, res) => {
   try {
     const companyData = await Company.destroy({
       where: {
@@ -25,7 +26,7 @@ router.delete('/:id', withAuth, async (req, res) => {
     });
 
     if (!companyData) {
-      res.status(404).json({ message: 'No Client found with this id!' });
+      res.status(404).json({ message: "No Client found with this id!" });
       return;
     }
 
