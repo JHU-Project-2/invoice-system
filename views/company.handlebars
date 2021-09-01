@@ -1,8 +1,38 @@
-Name: {{company.name}} <br>
-Contact: {{company.contact.name}} <br>
-Email: {{company.contact.email}} <br>
-Phone: {{company.contact.phone}} <br>
-Address: {{company.address.address_1}} <br>
-Address 2: {{company.address.address_2}} <br>
-City: {{company.address.city}} <br>
-State: {{company.address.state}} <br>
+{{>main-menu}}
+<div class="card col-6">
+  <div class="card-header">
+    <h2>{{company.name}}</h2>
+  </div>
+  <div class="card-body">
+   <h3 class="card-text">{{company.contact.name}}</h3>
+   <p class="card-text">{{company.contact.email}}</p>
+   <p class="card-text">{{company.contact.phone}}</p>
+   <p class="card-text">{{company.address.address_1}}</p>
+   <p class="card-text">{{company.address.address_2}}</p>
+  </div>
+</div>
+
+ <p>Name:
+      {{company.name}}
+      <br />
+      Contact:
+      {{company.contact.name}}
+      <br />
+      Email:
+      {{company.contact.email}}
+      <br />
+      Phone:
+      {{company.contact.phone}}
+      <br />
+      Address:
+      {{company.address.address_1}}
+      <br />
+      Address 2:
+      {{company.address.address_2}}
+      <br />
+      City:
+      {{company.address.city}}
+      <br />
+      State:
+      {{company.address.state}}
+      <br /></p>

@@ -11,3 +11,10 @@
 .side-nav_name {
     color: white;
 }
+
+.side-navbar a {
+    display: block;
+    margin: 10px;
+    padding: 10px;
+    
+}
