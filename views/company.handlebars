@@ -9,7 +9,31 @@
     <p class="card-text"><i class="fas fa-address-card"></i> {{company.address.address_1}},
       {{company.address.address_2}}, {{company.address.city}}, {{company.address.state}} {{company.address.zip_code}}
     </p>
-
-    <p class="card-text"></p>
   </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <h2>Projects</h2>
+  </div>
+  {{#each company.projects}}
+
+    <div class="card">
+      <div class="card-header">
+        <h4>Project Title: {{title}}</h4>
+      </div>
+      <div class="card-body">
+        <h4>Type: {{type}}</h4>
+        <h4>Price: ${{price}}</h4>
+
+
+      </div>
+      <div class="card-footer">
+        <span>Due Date:</span> {{format_date due_date}}
+
+      </div>
+
+
+    </div>
+  {{/each}}
 </div>

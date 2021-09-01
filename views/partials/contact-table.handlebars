@@ -1,0 +1,28 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Email</th>
+            <th scope="col">Address</th>
+            <th scope="col">City</th>
+            <th scope="col">State</th>
+            <th scope="col">Zip</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each companies}}
+            <tr>
+                <th scope="row">{{contact.name}}</th>
+                <td>{{contact.phone}}</td>
+                <td>{{contact.email}}</td>
+                <td>{{address.address_1}} {{address.address_2}}</td>
+                <td>{{address.city}}</td>
+                <td>{{address.state}}</td>
+                <td>{{address.zip_code}}</td>
+
+            </tr>
+        {{/each}}
+
+    </tbody>
+</table>
