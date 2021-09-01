@@ -79,7 +79,11 @@ router.get("/company/:id", (req, res) => {
         model: Address,
         attributes: [
           "id",
-          "address_1"
+          "address_1",
+          "address_2",
+          "city",
+          "state",
+          "zip_code"
         ],
       },
       {
