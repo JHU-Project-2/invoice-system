@@ -36,7 +36,9 @@ router.get('/login', (req, res) => {
     return;
   }
 
-  res.render('login');
+  res.render('login', {
+    title: "Login"
+  });
 });
 // ! FRONT END ROUTES
 router.get('/dashboard', withAuth, async (req, res) => {
@@ -96,8 +98,6 @@ router.get("/company/:id", (req, res) => {
         ],
       }
     ],
-
-
 
   })
     .then((companyData) => {
