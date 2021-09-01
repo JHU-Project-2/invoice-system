@@ -35,3 +35,18 @@
 a:hover {
     cursor: pointer;
 }
+
+.text-cover {
+    background-color: rgb(5, 36, 92);
+    color: white;
+}
+
+.cover-heading {
+    text-align: center;
+    padding: 20px;
+}
+
+.lead {
+    text-align: center;
+    padding: 10px;
+}
