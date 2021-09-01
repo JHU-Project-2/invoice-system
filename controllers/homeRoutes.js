@@ -1,5 +1,5 @@
 const sequelize = require("../config/connection");
-const { User, Company, Contact, Address, Project } = require("../models");
+const { User, Company, Contact, Address, Project, Invoice, Item } = require("../models");
 const router = require("express").Router();
 const withAuth = require('../utils/auth');
 
@@ -139,6 +139,53 @@ router.get("/company/:id", (req, res) => {
         logged_in: req.session.logged_in,
         username: req.session.username,
         title: "Company",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.get("/invoices", (req, res) => {
+  Project.findOne({
+    where: {
+      id: req.params.id,
+    },
+    attributes: ["id", "title", "price", "due_date"],
+    include: [
+      {
+        model: Invoice,
+        attributes: [
+          "id",
+          "name",
+        ],
+        include: {
+          model: Item,
+          attributes: [
+            "description",
+            "units",
+            "unit_price"
+          ],
+        },
+      },
+      {
+        model: User,
+        attributes: ["username"],
+      },
+    ],
+  })
+    .then((postData) => {
+      if (!postData) {
+        res.status(404).json({ message: "No post found with this id" });
+        return;
+      }
+      const post = postData.get({ plain: true });
+
+      res.render("posts-comments", {
+        post,
+        username: req.session.username,
+        logged_in: req.session.logged_in,
       });
     })
     .catch((err) => {

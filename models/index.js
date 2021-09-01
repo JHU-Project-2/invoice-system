@@ -3,6 +3,8 @@ const Company = require('./Company');
 const Contact = require('./Contact');
 const Address = require('./Address');
 const Project = require('./Project');
+const Invoice = require('./Invoice');
+const Item = require('./Item');
 
 
 
@@ -16,7 +18,6 @@ Company.hasOne(Contact, {
     onDelete: "cascade"
 })
 
-
 Company.hasOne(Address, {
     foreignKey: "company_id",
     onDelete: "cascade",
@@ -25,6 +26,14 @@ Company.hasMany(Project, {
     foreignKey: "company_id",
     onDelete: "cascade",
 })
+Project.hasMany(Invoice, {
+    foreignKey: "project_id",
+    onDelete: "cascade",
+})
+Invoice.hasMany(Item, {
+    foreignKey: "invoice_id",
+    onDelete: "cascade",
+})
 
 
-module.exports = { User, Company, Contact, Address, Project };
+module.exports = { User, Company, Contact, Address, Project, Invoice, Item };

@@ -1,10 +1,12 @@
 const sequelize = require("../config/connection");
-const { User, Company, Contact, Address, Project } = require("../models");
+const { User, Company, Contact, Address, Project, Item, Invoice } = require("../models");
 const userData = require("./userData.json");
 const companyData = require("./companyData.json");
 const contactData = require("./contactData.json");
 const addressData = require("./addressData.json");
 const projectData = require("./projectData.json");
+const invoiceData = require("./invoiceData.json");
+const itemData = require("./itemData.json");
 
 
 const seedDatabase = async () => {
@@ -27,6 +29,14 @@ const seedDatabase = async () => {
     returning: true,
   });
   await Project.bulkCreate(projectData, {
+    individualHooks: true,
+    returning: true,
+  });
+  await Invoice.bulkCreate(invoiceData, {
+    individualHooks: true,
+    returning: true,
+  });
+  await Item.bulkCreate(itemData, {
     individualHooks: true,
     returning: true,
   });
