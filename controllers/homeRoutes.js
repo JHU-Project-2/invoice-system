@@ -1,5 +1,5 @@
 const sequelize = require("../config/connection");
-const { User, Company, Contact } = require("../models");
+const { User, Company, Contact, Address } = require("../models");
 const router = require("express").Router();
 const withAuth = require('../utils/auth');
 
@@ -70,8 +70,22 @@ router.get("/company/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-    attributes: ["id", "name"],
+    attributes: [
+      "id",
+      "name"
+    ],
     include: [
+      {
+        model: Address,
+        attributes: [
+          "id",
+          "address_1",
+          "address_2",
+          "city",
+          "state",
+          "zip_code"
+        ],
+      },
       {
         model: Contact,
         attributes: [
@@ -80,8 +94,11 @@ router.get("/company/:id", (req, res) => {
           "email",
           "phone"
         ],
-      },
+      }
     ],
+
+
+
   })
     .then((companyData) => {
       if (!companyData) {
