@@ -123,6 +123,14 @@ router.get("/company/:id", (req, res) => {
           "due_date",
 
         ],
+        include: {
+          model: Invoice,
+          attributes: [
+            "id",
+            "name"
+          ]
+        }
+
       }
     ],
 
@@ -147,12 +155,60 @@ router.get("/company/:id", (req, res) => {
     });
 });
 
-router.get("/invoices", (req, res) => {
+router.get('/new-company', withAuth, async (req, res) => {
+  try {
+    // Get all projects and JOIN with user data
+    const companyData = await Company.findAll({
+      include: [
+        {
+          model: Address,
+          attributes: [
+            "id",
+            "address_1",
+            "address_2",
+            "city",
+            "state",
+            "zip_code"
+          ],
+        },
+        {
+          model: Contact,
+          attributes: [
+            "id",
+            "name",
+            "email",
+            "phone"
+          ],
+        }
+      ],
+    });
+
+    // Serialize data so the template can read it
+    const companies = companyData.map((company) => company.get({ plain: true }));
+    console.log(companies)
+    // Pass serialized data and session flag into template
+    res.render('new-company', {
+      companies,
+      logged_in: req.session.logged_in,
+      title: "Add Company"
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get("/project/:id", (req, res) => {
   Project.findOne({
     where: {
       id: req.params.id,
     },
-    attributes: ["id", "title", "price", "due_date"],
+    attributes: [
+      "id",
+      "title",
+      "type",
+      "price",
+      "due_date",
+    ],
     include: [
       {
         model: Invoice,
@@ -160,32 +216,22 @@ router.get("/invoices", (req, res) => {
           "id",
           "name",
         ],
-        include: {
-          model: Item,
-          attributes: [
-            "description",
-            "units",
-            "unit_price"
-          ],
-        },
-      },
-      {
-        model: User,
-        attributes: ["username"],
       },
     ],
+
   })
-    .then((postData) => {
-      if (!postData) {
+    .then((companyData) => {
+      if (!companyData) {
         res.status(404).json({ message: "No post found with this id" });
         return;
       }
-      const post = postData.get({ plain: true });
-
-      res.render("posts-comments", {
-        post,
-        username: req.session.username,
+      const company = companyData.get({ plain: true });
+      console.log(company);
+      res.render("new-invoice", {
+        company,
         logged_in: req.session.logged_in,
+        username: req.session.username,
+        title: "New Invoice",
       });
     })
     .catch((err) => {
@@ -193,6 +239,8 @@ router.get("/invoices", (req, res) => {
       res.status(500).json(err);
     });
 });
+
+
 
 
 

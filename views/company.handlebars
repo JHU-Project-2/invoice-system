@@ -12,12 +12,6 @@
   </div>
 </div>
 
-<div class="col-12 col-md-6">
-  <button href="#" class="btn btn-primary">New Invoice</button>
-  <button class="btn btn-primary">Edit Invoice</button>
-</div>
-
-
 
 
 
@@ -30,6 +24,8 @@
     <div class="card">
       <div class="card-header">
         <h4>Project Title: {{title}}</h4>
+        <button href="/project/{{project.id}}" class="btn btn-sm btn-primary">New Invoice</button>
+        <button class="btn btn-sm btn-primary">Edit Invoice</button>
       </div>
       <div class="card-body">
         <h4>Type: {{type}}</h4>
