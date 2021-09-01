@@ -1,5 +1,5 @@
 const sequelize = require("../config/connection");
-const { User, Company, Contact, Address } = require("../models");
+const { User, Company, Contact, Address, Project } = require("../models");
 const router = require("express").Router();
 const withAuth = require('../utils/auth');
 
@@ -36,19 +36,37 @@ router.get('/login', (req, res) => {
     return;
   }
 
-  res.render('login');
+  res.render('login', {
+    title: "Login"
+  });
 });
 // ! FRONT END ROUTES
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
     // Get all projects and JOIN with user data
     const companyData = await Company.findAll({
-      // include: [
-      //   {
-      //     model: User,
-      //     attributes: ['name'],
-      //   },
-      // ],
+      include: [
+        {
+          model: Address,
+          attributes: [
+            "id",
+            "address_1",
+            "address_2",
+            "city",
+            "state",
+            "zip_code"
+          ],
+        },
+        {
+          model: Contact,
+          attributes: [
+            "id",
+            "name",
+            "email",
+            "phone"
+          ],
+        }
+      ],
     });
 
     // Serialize data so the template can read it
@@ -94,10 +112,19 @@ router.get("/company/:id", (req, res) => {
           "email",
           "phone"
         ],
+      },
+      {
+        model: Project,
+        attributes: [
+          "id",
+          "title",
+          "type",
+          "price",
+          "due_date",
+
+        ],
       }
     ],
-
-
 
   })
     .then((companyData) => {
@@ -119,4 +146,8 @@ router.get("/company/:id", (req, res) => {
       res.status(500).json(err);
     });
 });
+
+
+
+
 module.exports = router;

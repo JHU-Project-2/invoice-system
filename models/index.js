@@ -2,6 +2,7 @@ const User = require('./User');
 const Company = require('./Company');
 const Contact = require('./Contact');
 const Address = require('./Address');
+const Project = require('./Project');
 
 
 
@@ -20,6 +21,10 @@ Company.hasOne(Address, {
     foreignKey: "company_id",
     onDelete: "cascade",
 })
+Company.hasMany(Project, {
+    foreignKey: "company_id",
+    onDelete: "cascade",
+})
 
 
-module.exports = { User, Company, Contact, Address };
+module.exports = { User, Company, Contact, Address, Project };

@@ -1,7 +1,8 @@
 .side-navbar {
     background-color: blue;
     height: 100vh;
-    justify-content: space-between;
+    width: 100%;
+    border-radius: 0px 5px 5px 0px;
 }
 
 .side-nav_logo {
@@ -16,5 +17,21 @@
     display: block;
     margin: 10px;
     padding: 10px;
-    
+    color: white;
+}
+
+.nav-link {
+    color: white;
+}
+
+.custom-link {
+    color: rgba(255, 255, 255, 0.808)!important;
+}
+
+.custom-link:hover {
+    color: white!important;
+}
+
+a:hover {
+    cursor: pointer;
 }

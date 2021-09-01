@@ -1,38 +1,39 @@
-{{>main-menu}}
-<div class="card col-6">
+<div class="card col-12 col-md-6">
   <div class="card-header">
     <h2>{{company.name}}</h2>
   </div>
   <div class="card-body">
-   <h3 class="card-text">{{company.contact.name}}</h3>
-   <p class="card-text">{{company.contact.email}}</p>
-   <p class="card-text">{{company.contact.phone}}</p>
-   <p class="card-text">{{company.address.address_1}}</p>
-   <p class="card-text">{{company.address.address_2}}</p>
+    <h5 class="card-text">{{company.contact.name}}</h5>
+    <p class="card-text"><i class="fas fa-envelope"></i> {{company.contact.email}}</p>
+    <p class="card-text"><i class="fas fa-phone"></i> {{company.contact.phone}}</p>
+    <p class="card-text"><i class="fas fa-address-card"></i> {{company.address.address_1}},
+      {{company.address.address_2}}, {{company.address.city}}, {{company.address.state}} {{company.address.zip_code}}
+    </p>
   </div>
 </div>
 
- <p>Name:
-      {{company.name}}
-      <br />
-      Contact:
-      {{company.contact.name}}
-      <br />
-      Email:
-      {{company.contact.email}}
-      <br />
-      Phone:
-      {{company.contact.phone}}
-      <br />
-      Address:
-      {{company.address.address_1}}
-      <br />
-      Address 2:
-      {{company.address.address_2}}
-      <br />
-      City:
-      {{company.address.city}}
-      <br />
-      State:
-      {{company.address.state}}
-      <br /></p>
+<div class="card">
+  <div class="card-header">
+    <h2>Projects</h2>
+  </div>
+  {{#each company.projects}}
+
+    <div class="card">
+      <div class="card-header">
+        <h4>Project Title: {{title}}</h4>
+      </div>
+      <div class="card-body">
+        <h4>Type: {{type}}</h4>
+        <h4>Price: ${{price}}</h4>
+
+
+      </div>
+      <div class="card-footer">
+        <span>Due Date:</span> {{format_date due_date}}
+
+      </div>
+
+
+    </div>
+  {{/each}}
+</div>
