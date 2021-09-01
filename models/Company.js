@@ -16,7 +16,6 @@ Company.init(
             allowNull: false,
         },
 
-
     },
     {
         sequelize,

@@ -1,0 +1,38 @@
+[
+	{
+		"id": 1,
+		"address_1": "123 Main St",
+		"address_2": "Unit 4",
+		"city": "Baltimore",
+		"state": "MD",
+		"zip_code": 21208,
+		"company_id": 1
+	},
+	{
+		"id": 2,
+		"address_1": "123 Main St",
+		"address_2": "Unit 4",
+		"city": "Baltimore",
+		"state": "MD",
+		"zip_code": 21208,
+		"company_id": 2
+	},
+	{
+		"id": 3,
+		"address_1": "123 Main St",
+		"address_2": "Unit 4",
+		"city": "Baltimore",
+		"state": "MD",
+		"zip_code": 21208,
+		"company_id": 3
+	},
+	{
+		"id": 4,
+		"address_1": "123 Main St",
+		"address_2": "Unit 4",
+		"city": "Baltimore",
+		"state": "MD",
+		"zip_code": 21208,
+		"company_id": 4
+	}
+]
