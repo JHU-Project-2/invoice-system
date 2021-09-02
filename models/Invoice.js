@@ -15,6 +15,11 @@ Invoice.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
+        is_paid: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
+            allowNull: false
+        },
         project_id: {
             type: DataTypes.INTEGER,
             references: {

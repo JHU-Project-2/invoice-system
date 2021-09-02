@@ -21,11 +21,7 @@ Project.init(
         price: {
             type: DataTypes.INTEGER,
         },
-        is_paid: {
-            type: DataTypes.BOOLEAN,
-            defaultValue: false,
-            allowNull: false
-        },
+
         due_date: {
             type: DataTypes.DATE,
         },
