@@ -1,0 +1,10 @@
+/dashboard
+
+
+/company/id
+
+/new-company (form)
+
+/project/id
+
+/invoice/id

@@ -196,7 +196,6 @@ router.get('/new-company', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
 router.get("/project/:id", (req, res) => {
   Project.findOne({
     where: {
@@ -220,18 +219,18 @@ router.get("/project/:id", (req, res) => {
     ],
 
   })
-    .then((companyData) => {
-      if (!companyData) {
+    .then((projectData) => {
+      if (!projectData) {
         res.status(404).json({ message: "No post found with this id" });
         return;
       }
-      const company = companyData.get({ plain: true });
-      console.log(company);
-      res.render("new-invoice", {
-        company,
+      const project = projectData.get({ plain: true });
+      console.log(project);
+      res.render("project-details", {
+        project,
         logged_in: req.session.logged_in,
         username: req.session.username,
-        title: "New Invoice",
+        title: "Project Details",
       });
     })
     .catch((err) => {
@@ -239,6 +238,48 @@ router.get("/project/:id", (req, res) => {
       res.status(500).json(err);
     });
 });
+router.get("/invoice/:id", (req, res) => {
+  Invoice.findOne({
+    where: {
+      id: req.params.id,
+    },
+    attributes: [
+      "id",
+      "name",
+    ],
+    include: [
+      {
+        model: Item,
+        attributes:
+          [
+            "description",
+            "units",
+            "unit_price",
+          ]
+
+      }
+    ],
+  })
+    .then((invoiceData) => {
+      if (!invoiceData) {
+        res.status(404).json({ message: "No post found with this id" });
+        return;
+      }
+      const invoice = invoiceData.get({ plain: true });
+      console.log(invoice);
+      res.render("invoice-details", {
+        invoice,
+        logged_in: req.session.logged_in,
+        username: req.session.username,
+        title: "Invoice Details",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 
 
 
