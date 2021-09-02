@@ -1,32 +1,56 @@
 [
 	{
-		"description": "Design and Graphics",
+		"description": "Design",
 		"units": 1,
 		"unit_price": 250,
 		"invoice_id": 1
 	},
 	{
-		"description": "HTML and CSS Design",
+		"description": "Graphics",
+		"units": 1,
+		"unit_price": 250,
+		"invoice_id": 1
+	},
+	{
+		"description": "HTML and CSS",
 		"units": 1,
 		"unit_price": 500,
 		"invoice_id": 2
 	},
 	{
-		"description": "Change Styles",
+		"description": "Finished and Deployed Site",
 		"units": 5,
-		"unit_price": 100,
-		"invoice_id": 1
+		"unit_price": 1000,
+		"invoice_id": 3
 	},
 	{
-		"description": "Change Styles Again",
+		"description": "First Draft Item",
 		"units": 3,
 		"unit_price": 175,
-		"invoice_id": 1
+		"invoice_id": 4
 	},
 	{
-		"description": "First Draft",
+		"description": "Final Draft Item",
 		"units": 1,
 		"unit_price": 175,
-		"invoice_id": 2
+		"invoice_id": 5
+	},
+	{
+		"description": "Preliminary Architecture",
+		"units": 1,
+		"unit_price": 175,
+		"invoice_id": 6
+	},
+	{
+		"description": "Implementation",
+		"units": 1,
+		"unit_price": 175,
+		"invoice_id": 7
+	},
+	{
+		"description": "Final Draft",
+		"units": 1,
+		"unit_price": 175,
+		"invoice_id": 3
 	}
 ]

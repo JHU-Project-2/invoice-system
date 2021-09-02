@@ -152,8 +152,7 @@ router.get("/company/:id", (req, res) => {
       res.status(500).json(err);
     });
 });
-
-router.get('/new-company', withAuth, async (req, res) => {
+router.get('/add-company', withAuth, async (req, res) => {
   try {
     // Get all projects and JOIN with user data
     const companyData = await Company.findAll({
@@ -185,7 +184,7 @@ router.get('/new-company', withAuth, async (req, res) => {
     const companies = companyData.map((company) => company.get({ plain: true }));
     console.log(companies)
     // Pass serialized data and session flag into template
-    res.render('new-company', {
+    res.render('add-company', {
       companies,
       logged_in: req.session.logged_in,
       title: "Add Company"
