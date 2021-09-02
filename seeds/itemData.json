@@ -22,5 +22,11 @@
 		"units": 3,
 		"unit_price": 175,
 		"invoice_id": 1
+	},
+	{
+		"description": "First Draft",
+		"units": 1,
+		"unit_price": 175,
+		"invoice_id": 2
 	}
 ]

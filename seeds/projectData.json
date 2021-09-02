@@ -35,9 +35,9 @@
 		"company_id": 3
 	},
 	{
-		"title": "Biography",
-		"type": "Writing",
-		"price": 270,
+		"title": "Product Design",
+		"type": "Product",
+		"price": 102270,
 		"due_date": "2022-12-23",
 		"company_id": 1
 	}

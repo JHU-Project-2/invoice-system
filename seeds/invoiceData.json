@@ -12,23 +12,23 @@
 		"project_id": 1
 	},
 	{
-		"name": "first invoice",
-		"project_id": 6
+		"name": "First Invoice",
+		"project_id": 2
 	},
 	{
-		"name": "second invoice",
-		"project_id": 6
+		"name": "Second Invoice",
+		"project_id": 3
 	},
 	{
-		"name": "third invoice",
-		"project_id": 6
+		"name": "Third Invoice",
+		"project_id": 4
 	},
 	{
-		"name": "first invoice",
+		"name": "First Invoice",
 		"project_id": 5
 	},
 	{
-		"name": "first invoice",
+		"name": "Invoice",
 		"project_id": 6
 	}
 ]
