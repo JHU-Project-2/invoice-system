@@ -63,8 +63,13 @@ router.get('/dashboard', withAuth, async (req, res) => {
             "email",
             "phone"
           ],
+
         }
       ],
+      order: [
+        ['name', 'ASC']
+      ],
+
     });
 
     // Serialize data so the template can read it
@@ -154,7 +159,7 @@ router.get("/company/:id", (req, res) => {
 });
 router.get('/add-company', withAuth, async (req, res) => {
   try {
-    // Get all projects and JOIN with user data
+    // Get all companies and JOIN with address and contact data
     const companyData = await Company.findAll({
       include: [
         {
@@ -193,6 +198,7 @@ router.get('/add-company', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 router.get("/project/:id", (req, res) => {
   Project.findOne({
     where: {
@@ -235,6 +241,8 @@ router.get("/project/:id", (req, res) => {
       res.status(500).json(err);
     });
 });
+
+//! working but cannot get project data this way
 router.get("/invoice/:id", (req, res) => {
   Invoice.findOne({
     where: {
@@ -253,9 +261,9 @@ router.get("/invoice/:id", (req, res) => {
             "units",
             "unit_price",
           ]
-
       }
     ],
+
   })
     .then((invoiceData) => {
       if (!invoiceData) {
@@ -276,7 +284,6 @@ router.get("/invoice/:id", (req, res) => {
       res.status(500).json(err);
     });
 });
-
 
 
 

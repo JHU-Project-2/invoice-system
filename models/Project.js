@@ -21,7 +21,7 @@ Project.init(
         price: {
             type: DataTypes.INTEGER,
         },
-        paid: {
+        is_paid: {
             type: DataTypes.BOOLEAN,
             defaultValue: false,
             allowNull: false

@@ -2,16 +2,20 @@ const router = require('express').Router();
 const { Contact } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.post('/', withAuth, async (req, res) => {
-  try {
-    const newContact = await Contact.create({
-      ...req.body,
+router.post('/', withAuth, (req, res) => {
+  if (req.session) {
+    Contact.create({
+      name: req.body.contactName,
+      email: req.body.contactEmail,
+      phone: req.body.contactPhone,
+      company_id: req.body.company_id,
       user_id: req.session.user_id,
-    });
-
-    res.status(200).json(newContact);
-  } catch (err) {
-    res.status(400).json(err);
+    })
+      .then(contactData => res.json(contactData))
+      .catch(err => {
+        console.log(err);
+        res.status(400).json(err);
+      })
   }
 });
 

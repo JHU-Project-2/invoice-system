@@ -3,7 +3,6 @@ async function addCompanyForm(event) {
 
   const name = document.getElementById("company-name").value;
 
-
   const response = await fetch(`/api/company`, {
     method: "POST",
     body: JSON.stringify({

@@ -1,15 +1,16 @@
 const router = require("express").Router();
-const { Company, Contact } = require("../../models");
+const { Company } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 
 router.post("/", withAuth, async (req, res) => {
   try {
     const newCompany = await Company.create({
-      ...req.body,
+      name: req.body.name,
       user_id: req.session.user_id,
-    });
 
+    });
+    console.log(newCompany)
     res.status(200).json(newCompany);
 
   } catch (err) {
@@ -28,7 +29,7 @@ router.delete("/:id", withAuth, async (req, res) => {
     });
 
     if (!companyData) {
-      res.status(404).json({ message: "No Client found with this id!" });
+      res.status(404).json({ message: "No Company found with this id!" });
       return;
     }
 
