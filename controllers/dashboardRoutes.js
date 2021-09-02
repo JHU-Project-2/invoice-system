@@ -1,103 +1,64 @@
 const router = require("express").Router();
 const sequelize = require("../config/connection");
-const { Company, User, Contact, Invoice, Item } = require("../models");
+const { Company, User, Address, Contact, Invoice, Item } = require("../models");
 const withAuth = require("../utils/auth");
-// router.get("/", withAuth, (req, res) => {
-//     Company.findAll({
-//         where: {
-//             user_id: req.session.user_id,
-//         },
-//         attributes: ["id", "title", "post_content", "created_at"],
-//         include: [
-//             {
-//                 model: Invoice,
-//                 attributes: [
-//                     "id",
-//                     "comment_body",
-//                     "post_id",
-//                     "user_id",
-//                     "created_at",
-//                 ],
-//                 include: {
-//                     model: User,
-//                     attributes: ["username"],
-//                 },
-//             },
-//             {
-//                 model: User,
-//                 attributes: ["username"],
-//             },
-//         ],
-//     })
-// 
-//         .then((postData) => {
-//             const posts = postData.map((post) => post.get({ plain: true }));
-//             res.render("dashboard", {
-//                 posts,
-//                 username: req.session.username,
-//                 logged_in: true,
-//                 title: "Dashboard",
-//             });
-//         })
-//         .catch((err) => {
-//             console.log(err);
-//             res.status(500).json(err);
-//         });
-// });
-// router.get("/edit/:id", withAuth, (req, res) => {
-//     Post.findOne({
-//         where: {
-//             id: req.params.id,
-//         },
-// 
-//         attributes: ["id", "title", "post_content", "created_at"],
-//         include: [
-//             {
-//                 model: User,
-//                 attributes: ["username"],
-//             },
-//             {
-//                 model: Comment,
-//                 attributes: [
-//                     "id",
-//                     "comment_body",
-//                     "post_id",
-//                     "user_id",
-//                     "created_at",
-//                 ],
-//                 include: {
-//                     model: User,
-//                     attributes: ["username"],
-//                 },
-//             },
-//         ],
-//     })
-//         .then((postData) => {
-//             if (!postData) {
-//                 res.status(404).json({ message: "No post found with this id" });
-//                 return;
-//             }
-// 
-//             const post = postData.get({ plain: true });
-//             res.render("edit-post", {
-//                 post,
-//                 username: req.session.username,
-//                 logged_in: true,
-//                 title: "Edit Post",
-//             });
-//         })
-// 
-//         .catch((err) => {
-//             console.log(err);
-//             res.status(500).json(err);
-//         });
-// });
-// router.get("/new", (req, res) => {
-//     res.render("add-post", {
-//         title: "Add Post",
-//         username: req.session.username,
-//         logged_in: true,
-//     });
-// });
+
+// Edit Company Route
+router.get("/edit/:id", withAuth, (req, res) => {
+    Company.findOne({
+        where: {
+            id: req.params.id,
+        },
+
+        attributes: [
+            'id',
+            'name',
+            'user_id',
+        ],
+        include: [
+            {
+                model: Contact,
+                attributes: [
+                    'id',
+                    'name',
+                    'email',
+                    'phone',
+                    'company_id'
+                ],
+            },
+            {
+                model: Address,
+                attributes: [
+                    'address_1',
+                    'address_2',
+                    'city',
+                    'state',
+                    'zip_code',
+                ],
+
+            },
+        ],
+    })
+        .then((companyData) => {
+            if (!companyData) {
+                res.status(404).json({ message: "No post found with this id" });
+                return;
+            }
+
+            const company = companyData.get({ plain: true });
+            res.render("edit-company", {
+                company,
+                username: req.session.username,
+                logged_in: true,
+                title: "Edit Company",
+            });
+        })
+
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
+
 
 module.exports = router;
