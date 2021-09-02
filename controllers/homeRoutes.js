@@ -63,8 +63,13 @@ router.get('/dashboard', withAuth, async (req, res) => {
             "email",
             "phone"
           ],
+
         }
       ],
+      order: [
+        ['name', 'asc']
+      ],
+
     });
 
     // Serialize data so the template can read it
@@ -80,7 +85,47 @@ router.get('/dashboard', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+router.get('/add-company', withAuth, async (req, res) => {
+  try {
+    // Get all companies and JOIN with address and contact data
+    const companyData = await Company.findAll({
+      include: [
+        {
+          model: Address,
+          attributes: [
+            "id",
+            "address_1",
+            "address_2",
+            "city",
+            "state",
+            "zip_code"
+          ],
+        },
+        {
+          model: Contact,
+          attributes: [
+            "id",
+            "name",
+            "email",
+            "phone"
+          ],
+        }
+      ],
+    });
 
+    // Serialize data so the template can read it
+    const companies = companyData.map((company) => company.get({ plain: true }));
+    console.log(companies)
+    // Pass serialized data and session flag into template
+    res.render('add-company', {
+      companies,
+      logged_in: req.session.logged_in,
+      title: "Add Company"
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 router.get("/company/:id", (req, res) => {
   Company.findOne({
     where: {
@@ -152,48 +197,6 @@ router.get("/company/:id", (req, res) => {
       res.status(500).json(err);
     });
 });
-
-router.get('/new-company', withAuth, async (req, res) => {
-  try {
-    // Get all projects and JOIN with user data
-    const companyData = await Company.findAll({
-      include: [
-        {
-          model: Address,
-          attributes: [
-            "id",
-            "address_1",
-            "address_2",
-            "city",
-            "state",
-            "zip_code"
-          ],
-        },
-        {
-          model: Contact,
-          attributes: [
-            "id",
-            "name",
-            "email",
-            "phone"
-          ],
-        }
-      ],
-    });
-
-    // Serialize data so the template can read it
-    const companies = companyData.map((company) => company.get({ plain: true }));
-    console.log(companies)
-    // Pass serialized data and session flag into template
-    res.render('new-company', {
-      companies,
-      logged_in: req.session.logged_in,
-      title: "Add Company"
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
 router.get("/project/:id", (req, res) => {
   Project.findOne({
     where: {
@@ -236,6 +239,8 @@ router.get("/project/:id", (req, res) => {
       res.status(500).json(err);
     });
 });
+
+//! working but cannot get project data this way
 router.get("/invoice/:id", (req, res) => {
   Invoice.findOne({
     where: {
@@ -254,9 +259,9 @@ router.get("/invoice/:id", (req, res) => {
             "units",
             "unit_price",
           ]
-
       }
     ],
+
   })
     .then((invoiceData) => {
       if (!invoiceData) {
@@ -277,7 +282,6 @@ router.get("/invoice/:id", (req, res) => {
       res.status(500).json(err);
     });
 });
-
 
 
 

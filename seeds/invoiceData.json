@@ -1,34 +1,57 @@
 [
 	{
-		"name": "Design",
+		"id": 1,
+		"name": "Preliminary Design",
 		"project_id": 1
 	},
 	{
-		"name": "Working Website",
+		"id": 2,
+		"name": "Start Website",
 		"project_id": 1
 	},
 	{
-		"name": "Edits",
+		"id": 3,
+		"name": "Finished/Deployed Website",
 		"project_id": 1
 	},
 	{
-		"name": "First Invoice",
+		"id": 4,
+		"name": "First Draft",
 		"project_id": 2
 	},
 	{
-		"name": "Second Invoice",
+		"id": 5,
+		"name": "Final Draft",
+		"project_id": 2
+	},
+	{
+		"id": 6,
+		"name": "Database Design",
 		"project_id": 3
 	},
 	{
-		"name": "Third Invoice",
+		"id": 7,
+		"name": "Implementation",
+		"project_id": 3
+	},
+	{
+		"id": 8,
+		"name": "Preliminary Planning",
 		"project_id": 4
 	},
 	{
-		"name": "First Invoice",
+		"id": 9,
+		"name": "Final Product",
+		"project_id": 4
+	},
+	{
+		"id": 10,
+		"name": "Consultation",
 		"project_id": 5
 	},
 	{
-		"name": "Invoice",
-		"project_id": 6
+		"id": 11,
+		"name": "Final Delivery",
+		"project_id": 5
 	}
 ]

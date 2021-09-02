@@ -1,19 +1,18 @@
-async function newCompanyForm(event) {
+async function addCompanyForm(event) {
   event.preventDefault();
 
-  const name = document.getElementById("name").value;
-  const contactName = document.getElementById("company-contact-name").value;
+  const name = document.getElementById("company-name").value;
 
   const response = await fetch(`/api/company`, {
     method: "POST",
     body: JSON.stringify({
       name,
-      contactName,
     }),
     headers: {
       "Content-Type": "application/json",
     },
   });
+
 
   if (response.ok) {
     document.location.replace("/dashboard");
@@ -23,5 +22,5 @@ async function newCompanyForm(event) {
 }
 
 document
-  .querySelector("#new-company-form")
-  .addEventListener("submit", newCompanyForm);
+  .querySelector("#add-company-form")
+  .addEventListener("submit", addCompanyForm);

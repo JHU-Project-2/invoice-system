@@ -1,5 +1,6 @@
 [
 	{
+		"id": 1,
 		"title": "New Website",
 		"type": "Website",
 		"price": 2500,
@@ -7,6 +8,7 @@
 		"company_id": 1
 	},
 	{
+		"id": 2,
 		"title": "Biography",
 		"type": "Writing",
 		"price": 250,
@@ -14,6 +16,7 @@
 		"company_id": 3
 	},
 	{
+		"id": 3,
 		"title": "Inventory System",
 		"type": "System",
 		"price": 12500,
@@ -21,6 +24,7 @@
 		"company_id": 2
 	},
 	{
+		"id": 4,
 		"title": "Telephone System",
 		"type": "Software Development",
 		"price": 270,
@@ -28,17 +32,11 @@
 		"company_id": 4
 	},
 	{
+		"id": 5,
 		"title": "New Logo",
 		"type": "Graphics",
 		"price": 750,
 		"due_date": "2022-01-23",
-		"company_id": 3
-	},
-	{
-		"title": "Product Design",
-		"type": "Product",
-		"price": 102270,
-		"due_date": "2022-12-23",
 		"company_id": 1
 	}
 ]
