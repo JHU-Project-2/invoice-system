@@ -1,12 +1,34 @@
 [
 	{
-		"id": 1,
-		"name": "first invoice",
+		"name": "Design",
 		"project_id": 1
 	},
 	{
-		"id": 2,
-		"name": "first invoice",
+		"name": "Working Website",
+		"project_id": 1
+	},
+	{
+		"name": "Edits",
+		"project_id": 1
+	},
+	{
+		"name": "First Invoice",
 		"project_id": 2
+	},
+	{
+		"name": "Second Invoice",
+		"project_id": 3
+	},
+	{
+		"name": "Third Invoice",
+		"project_id": 4
+	},
+	{
+		"name": "First Invoice",
+		"project_id": 5
+	},
+	{
+		"name": "Invoice",
+		"project_id": 6
 	}
 ]

@@ -1,0 +1,23 @@
+<h1>Invoice Details</h1>
+
+{{!-- this is where the actual invoice template will go --}}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Description</th>
+            <th scope="col">Units</th>
+            <th scope="col">PPU</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each invoice.items}}
+            <tr>
+                <td>{{description}}</td>
+                <td>{{units}}</td>
+                <td>{{unit_price}}</td>
+            </tr>
+        {{/each}}
+    </tbody>
+</table>

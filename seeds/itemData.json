@@ -1,9 +1,32 @@
 [
 	{
-		"id": 1,
-		"description": 1,
-		"units": 5,
-		"unit_price": 10,
+		"description": "Design and Graphics",
+		"units": 1,
+		"unit_price": 250,
 		"invoice_id": 1
+	},
+	{
+		"description": "HTML and CSS Design",
+		"units": 1,
+		"unit_price": 500,
+		"invoice_id": 2
+	},
+	{
+		"description": "Change Styles",
+		"units": 5,
+		"unit_price": 100,
+		"invoice_id": 1
+	},
+	{
+		"description": "Change Styles Again",
+		"units": 3,
+		"unit_price": 175,
+		"invoice_id": 1
+	},
+	{
+		"description": "First Draft",
+		"units": 1,
+		"unit_price": 175,
+		"invoice_id": 2
 	}
 ]

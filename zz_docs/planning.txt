@@ -41,3 +41,7 @@ address_1: {
             type: DataTypes.STRING,
             allowNull: false,
         },
+
+
+
+       

@@ -1,3 +1,4 @@
+{{!-- Company/Contact Card --}}
 <div class="card col-12 col-md-6">
   <div class="card-header">
     <h2>{{company.name}}</h2>
@@ -14,26 +15,24 @@
 
 
 
-
-<div class="card">
+{{!-- All Projects for Company --}}
+<div class="card ">
   <div class="card-header">
     <h2>Projects</h2>
   </div>
   {{#each company.projects}}
-
-    <div class="card">
+    <div class="card m-3">
       <div class="card-header">
-        <h4>Project Title: {{title}}</h4>
-        <button href="/project/{{project.id}}" class="btn btn-sm btn-primary">New Invoice</button>
-        <button class="btn btn-sm btn-primary">Edit Invoice</button>
+        <a href="/project/{{id}}">
+          <h4>{{title}}</h4>
+        </a>
       </div>
       <div class="card-body">
         <h4>Type: {{type}}</h4>
-        <h4>Price: ${{price}}</h4>
+        <h4>Price: ${{format_amount price}}</h4>
       </div>
       <div class="card-footer">
-        <h6>Due Date:</h6> {{format_date due_date}}
-
+        <h6>Due Date: {{format_date due_date}}</h6>
       </div>
     </div>
   {{/each}}

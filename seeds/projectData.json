@@ -21,24 +21,24 @@
 		"company_id": 2
 	},
 	{
-		"title": "Biography",
-		"type": "Writing",
+		"title": "Telephone System",
+		"type": "Software Development",
 		"price": 270,
 		"due_date": "2022-08-16",
 		"company_id": 4
 	},
 	{
-		"title": "Site",
-		"type": "Website",
+		"title": "New Logo",
+		"type": "Graphics",
 		"price": 750,
-		"due_date": "2022-08-16",
+		"due_date": "2022-01-23",
 		"company_id": 3
 	},
 	{
-		"title": "Biography",
-		"type": "Writing",
-		"price": 270,
-		"due_date": "2022-08-16",
+		"title": "Product Design",
+		"type": "Product",
+		"price": 102270,
+		"due_date": "2022-12-23",
 		"company_id": 1
 	}
 ]

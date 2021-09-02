@@ -30,6 +30,10 @@ Project.hasMany(Invoice, {
     foreignKey: "project_id",
     onDelete: "cascade",
 })
+Invoice.belongsTo(Project, {
+    foreignKey: "project_id",
+    onDelete: "cascade",
+})
 Invoice.hasMany(Item, {
     foreignKey: "invoice_id",
     onDelete: "cascade",
