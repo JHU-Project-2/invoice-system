@@ -164,26 +164,44 @@ router.post("/", withAuth, async (req, res) => {
     res.status(400).json(err);
   }
 });
-
-//  Delete Company Route
-router.delete("/:id", withAuth, async (req, res) => {
-  try {
-    const companyData = await Company.destroy({
+// Update Company Route
+router.put('/:id', withAuth, (req, res) => {
+  Company.update({
+    name: req.body.title,
+  },
+    {
       where: {
-        id: req.params.id,
-        user_id: req.session.user_id,
-      },
+        id: req.params.id
+      }
+    }).then(companyData => {
+      if (!companyData) {
+        res.status(404).json({ message: 'No company found with this id' });
+        return;
+      }
+      res.json(companyData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
     });
-
+});
+//  Delete Company Route
+router.delete('/:id', withAuth, (req, res) => {
+  Company.destroy({
+    where: {
+      id: req.params.id
+    }
+  }).then(companyData => {
     if (!companyData) {
-      res.status(404).json({ message: "No Company found with this id!" });
+      res.status(404).json({ message: 'No company found with this id' });
       return;
     }
-
-    res.status(200).json(companyData);
-  } catch (err) {
+    res.json(companyData);
+  }).catch(err => {
+    console.log(err);
     res.status(500).json(err);
-  }
+  });
 });
+
 
 module.exports = router;
