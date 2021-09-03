@@ -2,28 +2,35 @@
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
 <div class="sidebar">
-  <div class="logo-details">
-    <a class="logo_name" href="/">Arpad</a>
+  <div class="logo-details mb-2">
+    <a class="logo_name" href="/">
+            <img src="/img/logo-white.png"></a>
+  
     <i class='bx bx-menu' id="btn"></i>
+            
+    
   </div>
   <ul class="nav-list">
     <li>
-      <a id="add-contact" href="/dashboard/add-contact"><i id="add-contact-icon"
-          class="menu-icon bx bx-bolt-circle"></i><span class="menu-text">Add Contact</span></a>
+      <a href="/dashboard"><i 
+        class="fas fa-tachometer-alt"></i><span class="menu-text">Dashboard</span></a>
     </li>
     <li>
-      <a id="add-company" href="/dashboard/add-company"><i id="add-company-icon"
-          class="menu-icon bx bx-bolt-circle"></i><span class="menu-text">Add New Company</span></a>
+      <a href="/dashboard/add-contact"><i id="add-contact-icon"
+        class="far fa-address-book"></class></i><span class="menu-text">Add Contact</span></a>
     </li>
     <li>
-      <a href="/dashboard/edit/{{company.id}}"><i id="add-company-icon" class="menu-icon bx bx-bolt-circle"></i><span
+      <a href="/dashboard/add-company"><i id="add-company-icon"
+          class="far fa-plus-square"></i><span class="menu-text">Add Company</span></a>
+    </li>
+    <li>
+      <a href="/dashboard/edit/{{company.id}}"><i id="add-company-icon"class="far fa-edit"></i><span
           class="menu-text">Edit Company</span></a>
     </li>
 
     {{!-- BACK BUTTON --}}
     <li>
-
-      <a class="menu-text" onclick="goBack()">Back</a>
+      <a href="#" onclick="goBack()"><i class="fas fa-arrow-circle-left"></i><span class="menu-text">Back</span></a>
       <script>
         function goBack() {
           window.history.back();
@@ -32,15 +39,7 @@
     </li>
     {{!-- END BACK BUTTON --}}
 
-    {{#if logged_in}}
-      <li class="nav-item">
-        <a class="nav-link text-light" id="logout">Logout</a>
-      </li>
-    {{else}}
-      <li class="nav-item">
-        <a class="nav-link text-light" href="/login">Login</a>
-      </li>
-    {{/if}}
+
   </ul>
 
 </div>
