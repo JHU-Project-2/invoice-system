@@ -7,6 +7,12 @@ module.exports = {
     // format large numbers with commas
     return parseInt(amount).toLocaleString();
   },
+  format_phone: (phoneNum) => {
+    return phoneNum.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3");
+  },
+
+
+
   get_emoji: () => {
     const randomNum = Math.random();
 

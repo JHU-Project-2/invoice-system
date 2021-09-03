@@ -194,9 +194,8 @@ router.post("/", withAuth, async (req, res) => {
   await company.contact.save()
   await company.address.save()
 
-
-
   res.status(200).json(company);
+
 
 
 

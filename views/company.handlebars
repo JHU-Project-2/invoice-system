@@ -24,7 +24,7 @@
   <div class="card-body">
     <h5 class="card-text">{{company.contact.name}}</h5>
     <p class="card-text"><i class="fas fa-envelope"></i> {{company.contact.email}}</p>
-    <p class="card-text"><i class="fas fa-phone"></i> {{company.contact.phone}}</p>
+    <p class="card-text"><i class="fas fa-phone"></i> {{format_phone company.contact.phone}}</p>
     <p class="card-text"><i class="fas fa-address-card"></i> {{company.address.address_1}},
       {{company.address.address_2}}, {{company.address.city}}, {{company.address.state}} {{company.address.zip_code}}
     </p>
