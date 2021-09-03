@@ -167,12 +167,12 @@ router.post("/", withAuth, async (req, res) => {
 // Update Company Route
 router.put('/:id', withAuth, (req, res) => {
   Company.update({
-    name: req.body.title,
+    name: req.body.companyName,
   },
     {
       where: {
         id: req.params.id
-      }
+      },
     }).then(companyData => {
       if (!companyData) {
         res.status(404).json({ message: 'No company found with this id' });
@@ -190,8 +190,11 @@ router.delete('/:id', withAuth, (req, res) => {
   Company.destroy({
     where: {
       id: req.params.id
-    }
-  }).then(companyData => {
+    },
+
+  }
+
+  ).then(companyData => {
     if (!companyData) {
       res.status(404).json({ message: 'No company found with this id' });
       return;
