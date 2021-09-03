@@ -166,24 +166,7 @@ router.post("/", withAuth, async (req, res) => {
 });
 // Update Company Route
 router.put('/:id', withAuth, async (req, res) => {
-  // Company.update({
-  //   name: req.body.companyName,
-  // },
-  //   {
-  //     where: {
-  //       id: req.params.id
-  //     },
-  //   }).then(companyData => {
-  //     if (!companyData) {
-  //       res.status(404).json({ message: 'No company found with this id' });
-  //       return;
-  //     }
-  //     res.json(companyData);
-  //   })
-  //   .catch(err => {
-  //     console.log(err);
-  //     res.status(500).json(err);
-  //   });
+
 
   let company = await Company.findOne({
     where: {
