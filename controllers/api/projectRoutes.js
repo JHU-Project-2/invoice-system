@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const { Project, Invoice, Item } = require('../../models');
 
+
+
 // GET all projects
 //! Not working
 router.get('/', async (req, res) => {
@@ -36,14 +38,23 @@ router.get('/:id', async (req, res) => {
 });
 
 // CREATE a Project
-router.post('/', async (req, res) => {
-    try {
-        const projectData = await Project.create(req.body);
-        res.status(200).json(projectData);
-    } catch (err) {
-        res.status(400).json(err);
-    }
+router.post('/', (req, res) => {
+    Project.create({
+        title: req.body.title,
+        type: req.body.type,
+        price: req.body.price,
+        due_date: req.body.due_date,
+        company_id: req.body.company_id,
+
+        user_id: req.session.user_id
+    })
+        .then(postData => res.json(postData))
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
+
 
 // DELETE a Project
 router.delete('/:id', async (req, res) => {
