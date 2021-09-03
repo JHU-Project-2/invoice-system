@@ -3,12 +3,13 @@
   <a href="/add-contact">
     <button class="btn btn-sm btn-primary">Add Contact</button>
   </a>
-  <a href="/edit/{{id}}">
-    <button class="btn btn-sm btn-primary">Edit Company</button>
+  <a class="btn btn-sm btn-primary edit-company-btn" href="/dashboard/edit/{{company.id}}">
+    Edit Company
   </a>
-  <a href="/add-project">
-    <button class="btn btn-sm btn-primary delete-company-btn">Delete Company</button>
-  </a>
+
+  {{!-- add data attribute  --}}
+  <button class="btn btn-sm btn-primary delete-company-btn" data-company-id="{{company.id}}">Delete Company</button>
+
   <a href="/add-project">
     <button class="btn btn-sm btn-primary">Add Project</button>
   </a>
@@ -40,7 +41,7 @@
   {{#each company.projects}}
     <div class="card m-3">
       <div class="card-header">
-        <a href="/project/{{id}}">
+        <a href="/dashboard/project/{{id}}">
           <h4>{{title}}</h4>
         </a>
       </div>

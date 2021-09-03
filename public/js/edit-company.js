@@ -21,6 +21,20 @@ async function editFormHandler(event) {
         }
     });
 
+    //CONTACT
+    //     const response = await fetch(`/api/company/${id}`, {
+    //         method: 'PUT',
+    //         body: JSON.stringify({
+    //             company_id: id,
+    //             name,
+    // 
+    //         }),
+    // 
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         }
+    //     });
+
 
     if (response.ok) {
         document.location.replace('/dashboard/');
@@ -29,5 +43,6 @@ async function editFormHandler(event) {
     }
 
 }
+
 
 document.querySelector('.edit-company-form').addEventListener('submit', editFormHandler);

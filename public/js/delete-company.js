@@ -2,9 +2,8 @@
 async function deleteCompanyHandler(event) {
     event.preventDefault();
 
-    const id = window.location.toString().split('/')[
-        window.location.toString().split('/').length - 1
-    ];
+    const id = event.target.getAttribute("data-company-id")
+
 
     const response = await fetch(`/api/company/${id}`, {
 
