@@ -14,7 +14,7 @@
                 <input name="contact-email" type="text" value="{{company.contact.email}}" placeholder="Email"
                     class="form-input" />
                 <input name="contact-phone" type="text" value="{{company.contact.phone}}" placeholder="Phone"
-                    class="form-input" />
+                    id="phoneNumber" maxlength="16" class="form-input" />
             </div>
             <h3>Company Address</h3>
             <div class="form-group col-11">
@@ -38,3 +38,4 @@
 </div>
 
 <script src="/js/edit-company.js"></script>
+<script src="/js/format-phone.js"></script>

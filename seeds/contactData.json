@@ -3,28 +3,28 @@
 		"id": 1,
 		"name": "Josh",
 		"email": "josh@example.com",
-		"phone": "4105811234",
+		"phone": "(555)234-5678",
 		"company_id": 1
 	},
 	{
 		"id": 2,
 		"name": "Mike",
 		"email": "mike@example.com",
-		"phone": "5551234567",
+		"phone": "(555)234-5678",
 		"company_id": 2
 	},
 	{
 		"id": 3,
 		"name": "Ben",
 		"email": "ben@example.com",
-		"phone": "8884569524",
+		"phone": "(555)234-5678",
 		"company_id": 3
 	},
 	{
 		"id": 4,
 		"name": "Alex",
 		"email": "alex@example.com",
-		"phone": "6025551234",
+		"phone": "(555)234-5678",
 		"company_id": 4
 	}
 ]
