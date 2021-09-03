@@ -7,6 +7,13 @@ let menuIcon = document.querySelector(".menu-icon");
 
 closeBtn.addEventListener("click", () => {
     sidebar.classList.toggle("open");
+    if (sidebar.classList.contains("open")) {
+        document.getElementById("main").style.marginLeft = "250px";
+        document.getElementById("main").classList.remove("og-margin")
+    } else {
+        document.getElementById("main").style.marginLeft = "80px";
+    }
+
     menuBtnChange();//calling the function(optional)
 });
 

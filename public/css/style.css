@@ -34,3 +34,11 @@ a:hover {
   text-align: center;
   padding: 10px;
 }
+
+#main {
+  transition: margin-left .5s;
+}
+
+.og-margin {
+  padding-left: 85px;
+}
