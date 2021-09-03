@@ -21,6 +21,8 @@
 
 .menu-text {
  display: none;
+ transition: all 0.5s ease;
+ z-index: 99;
 }
 .sidebar.open .menu-text {
     display: block;
@@ -72,12 +74,8 @@
   line-height: 60px;
 }
 
-.hide {
-    display: none;
-}
-
-.show {
-    display: block;
+img {
+    width: 60%;
 }
 
 .sidebar li{
@@ -106,11 +104,6 @@
 
 .sidebar li a{
   display: flex;
-  height: 10%;
-  width: 75%;
-  padding: 10px;
-  margin: 7px 0 0 0;
-  float: right;
   color: #fff;
   border-radius: 12px;
   align-items: center;
