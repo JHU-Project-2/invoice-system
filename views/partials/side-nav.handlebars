@@ -4,27 +4,26 @@
 <div class="sidebar">
   <div class="logo-details mb-2">
     <a class="logo_name" href="/">
-            <img src="/img/logo-white.png"></a>
-  
+      <img src="/img/logo-white.png"></a>
+
     <i class='bx bx-menu' id="btn"></i>
-            
-    
+
+
   </div>
   <ul class="nav-list">
     <li>
-      <a href="/dashboard"><i 
-        class="fas fa-tachometer-alt"></i><span class="menu-text">Dashboard</span></a>
+      <a href="/dashboard"><i class="fas fa-tachometer-alt"></i><span class="menu-text">Dashboard</span></a>
     </li>
     <li>
-      <a href="/dashboard/add-contact"><i id="add-contact-icon"
-        class="far fa-address-book"></class></i><span class="menu-text">Add Contact</span></a>
+      <a href="/dashboard/add-contact"><i id="add-contact-icon" class="far fa-address-book"></class></i><span
+          class="menu-text">Add Contact</span></a>
     </li>
     <li>
-      <a href="/dashboard/add-company"><i id="add-company-icon"
-          class="far fa-plus-square"></i><span class="menu-text">Add Company</span></a>
+      <a href="/dashboard/add-company"><i id="add-company-icon" class="far fa-plus-square"></i><span
+          class="menu-text">Add Company</span></a>
     </li>
     <li>
-      <a href="/dashboard/edit/{{company.id}}"><i id="add-company-icon"class="far fa-edit"></i><span
+      <a href="/dashboard/edit/{{company.id}}"><i id="add-company-icon" class="far fa-edit"></i><span
           class="menu-text">Edit Company</span></a>
     </li>
 
@@ -43,30 +42,5 @@
   </ul>
 
 </div>
-<script>
-  let sidebar = document.querySelector(".sidebar");
-  let closeBtn = document.querySelector("#btn");
-  let menuText = document.getElementById("add-contact");
-  let menuText2 = document.getElementById("add-company");
-  let menuIcon = document.querySelector(".menu-icon");
 
-  closeBtn.addEventListener("click", () => {
-    sidebar.classList.toggle("open");
-    menuBtnChange();//calling the function(optional)
-  });
-
-  // following are the code to change sidebar button(optional)
-  function menuBtnChange() {
-    if (sidebar.classList.contains("open")) {
-      menuText.classList.replace("menu-text show");
-      menuText2.classList.replace("menu-text show");
-      menuIcon.classList.replace("menu-icon hide bx bx-bolt-circle");
-      closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
-    } else {
-      menuText.classList.replace("menu-text hide");
-      menuText2.classList.replace("menu-text hide");
-      menuIcon.classList.replace("menu-icon hide bx bx-bolt-circle");
-      closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");//replacing the iocns class
-    }
-  }
-</script>
+<script src="/js/side-nav.js"></script>
