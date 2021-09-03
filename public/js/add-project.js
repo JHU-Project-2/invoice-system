@@ -4,23 +4,23 @@
 async function addProjectFormHandler(event) {
     event.preventDefault();
 
-    const title = document.getElementById("title").value;
-    const type = document.getElementById("type").value;
-    const price = document.getElementById("price").value;
-    const due_date = document.getElementById("due-date").value;
+    const title = document.querySelector('input[name="title"]').value.trim();
+    const type = document.querySelector('input[name="type"]').value.trim();
+    const price = document.querySelector('input[name="price"]').value.trim();
+    const dueDate = document.querySelector('input[name="due-date"]').value.trim();
 
     const company_id = window.location.toString().split("/")[
         window.location.toString().split("/").length - 1
     ];
 
     if (title) {
-        const response = await fetch("/api/contacts", {
+        const response = await fetch("/api/project", {
             method: "POST",
             body: JSON.stringify({
                 title,
                 type,
                 price,
-                due_date,
+                dueDate,
                 company_id
             }),
             headers: {
@@ -29,14 +29,14 @@ async function addProjectFormHandler(event) {
         });
 
         if (response.ok) {
-            document.location.reload();
+            document.location.replace(`/dashboard/company/${company_id}`);
+
         } else {
             alert(response.statusText);
-            document.querySelector("#comment-form").style.display = "block";
         }
     }
 }
 
 document
-    .querySelector(".add-project-form")
+    .querySelector("#add-project-form")
     .addEventListener("submit", addProjectFormHandler);

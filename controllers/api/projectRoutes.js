@@ -43,12 +43,12 @@ router.post('/', (req, res) => {
         title: req.body.title,
         type: req.body.type,
         price: req.body.price,
-        due_date: req.body.due_date,
+        due_date: req.body.dueDate,
         company_id: req.body.company_id,
 
         user_id: req.session.user_id
     })
-        .then(postData => res.json(postData))
+        .then(projectData => res.json(projectData))
         .catch(err => {
             console.log(err);
             res.status(500).json(err);

@@ -95,77 +95,85 @@ router.get('/add-company', withAuth, async (req, res) => {
     }
 });
 // Front End route for add Project
-router.get('/add-project/:id', withAuth, async (req, res) => {
-    try {
-        // Get all companies and JOIN with address and contact data
-        const companyData = await Company.findOne({
-            where: {
-                id: req.params.id
-            },
-            include: {
+router.get('/add-project/:id', (req, res) => {
+    Company.findOne({
+        where: {
+            id: req.params.id,
+        },
+        attributes: [
+            "id",
+            "name"
+        ],
+        include: [
+            {
                 model: Address,
                 attributes: [
-                    'address_1',
-                    'address_2',
-                    'city',
-                    'state',
-                    'zip_code',
-                ]
-            },
-            include: {
-                model: Contact,
-                attributes: [
-                    'id',
-                    'name',
-                    'email',
-                    'phone',
-                    'company_id'
+                    "id",
+                    "address_1",
+                    "address_2",
+                    "city",
+                    "state",
+                    "zip_code"
                 ],
             },
-            include: [
-                {
-                    model: Project,
-                    attributes: [
-                        'title',
-                        'type',
-                        'price',
-                        'due_date',
+            {
+                model: Contact,
+                attributes: [
+                    "id",
+                    "name",
+                    "email",
+                    "phone"
+                ],
+            },
+            {
+                model: Project,
+                attributes: [
+                    "id",
+                    "title",
+                    "type",
+                    "price",
+                    "due_date",
 
+                ],
+                include: {
+                    model: Invoice,
+                    attributes: [
+                        "id",
+                        "name"
                     ],
                     include: {
-                        model: Invoice,
+                        model: Item,
                         attributes: [
-                            'name',
-                            'is_paid',
-
-                        ],
-                        include: {
-                            model: Item,
-                            attributes: [
-                                'description',
-                                'units',
-                                'unit_price',
-
-                            ]
-                        },
+                            'description',
+                            'units',
+                            'unit_price',
+                        ]
                     },
                 },
-            ],
+            }
+        ],
+    })
+        .then((companyData) => {
+            if (!companyData) {
+                res.status(404).json({ message: "No post found with this id" });
+                return;
+            }
+            const company = companyData.get({ plain: true });
+            console.log(company);
+            res.render("add-project", {
+                company,
+                logged_in: true,
+                title: "Add Project",
+            });
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
         });
-
-        // Serialize data so the template can read it
-        const companies = companyData.map((company) => company.get({ plain: true }));
-        console.log(companies)
-        // Pass serialized data and session flag into template
-        res.render('add-project', {
-            companies,
-            logged_in: req.session.logged_in,
-            title: "Add Project"
-        });
-    } catch (err) {
-        res.status(500).json(err);
-    }
 });
+
+
+
 // Front End route for one Company
 router.get("/company/:id", (req, res) => {
     Company.findOne({
@@ -229,7 +237,7 @@ router.get("/company/:id", (req, res) => {
             res.render("company", {
                 company,
                 logged_in: req.session.logged_in,
-                username: req.session.username,
+                user_id: req.session.user_id,
                 title: "Company",
             });
         })
@@ -271,8 +279,7 @@ router.get("/project/:id", (req, res) => {
             console.log(project);
             res.render("project-details", {
                 project,
-                logged_in: req.session.logged_in,
-                username: req.session.username,
+                logged_in: true,
                 title: "Project Details",
             });
         })
