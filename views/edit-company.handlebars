@@ -1,39 +1,42 @@
-<div class="card">
-    <h3 class="card-header">Edit Company</h3>
-    <div class="row text-center">
-        <form class="card-body edit-company-form">
-            <h3>Company Info</h3>
-            <div class="form-group col-11">
-                <input name="company-name" type="text" value="{{company.name}}" placeholder="Company Name"
-                    class="form-input" />
-            </div>
-            <h3>Company Contact</h3>
-            <div class="form-group col-11">
-                <input name="contact-name" type="text" value="{{company.contact.name}}" placeholder="Contact Name"
-                    class="form-input" />
-                <input name="contact-email" type="text" value="{{company.contact.email}}" placeholder="Email"
-                    class="form-input" />
-                <input name="contact-phone" type="text" value="{{company.contact.phone}}" placeholder="Phone"
-                    id="phoneNumber" maxlength="16" class="form-input" />
-            </div>
-            <h3>Company Address</h3>
-            <div class="form-group col-11">
-                <input name="contact-address-1" type="text" value="{{company.address.address_1}}" placeholder="Address"
-                    class="form-input" />
-                <input name="contact-address-2" type="text" value="{{company.address.address_2}}"
-                    placeholder="Apt/Unit/Floor" class="form-input" />
-                <input name="contact-city" type="text" value="{{company.address.city}}" placeholder="City"
-                    class="form-input" />
-                <input name="contact-state" type="text" value="{{company.address.state}}" placeholder="State"
-                    class="form-input" />
-                <input name="contact-zip-code" type="text" value="{{company.address.zip_code}}" placeholder="Zip Code"
-                    class="form-input" />
-            </div>
+<div class="row justify-content-center">
 
-            <div class="form-group col-11">
-                <button type="submit" class="btn btn-sm btn-primary">Update Company</button>
-            </div>
-        </form>
+    <div class="card col-12 col-md-6">
+        <h3 class="card-header">Edit Company</h3>
+        <div class="row text-center">
+            <form class="card-body edit-company-form">
+                <h3>Company Info</h3>
+                <div class="form-group col-11">
+                    <input name="company-name" type="text" value="{{company.name}}" placeholder="Company Name"
+                        class="form-control" />
+                </div>
+                <h3>Company Contact</h3>
+                <div class="form-group col-11">
+                    <input name="contact-name" type="text" value="{{company.contact.name}}" placeholder="Contact Name"
+                        class="form-control" />
+                    <input name="contact-email" type="text" value="{{company.contact.email}}" placeholder="Email"
+                        class="form-control" />
+                    <input name="contact-phone" type="text" value="{{company.contact.phone}}" placeholder="Phone"
+                        id="phoneNumber" maxlength="16" class="form-control" />
+                </div>
+                <h3>Company Address</h3>
+                <div class="form-group col-11">
+                    <input name="contact-address-1" type="text" value="{{company.address.address_1}}"
+                        placeholder="Address" class="form-control" />
+                    <input name="contact-address-2" type="text" value="{{company.address.address_2}}"
+                        placeholder="Apt/Unit/Floor" class="form-control" />
+                    <input name="contact-city" type="text" value="{{company.address.city}}" placeholder="City"
+                        class="form-control" />
+                    <input name="contact-state" type="text" value="{{company.address.state}}" placeholder="State"
+                        class="form-control" />
+                    <input name="contact-zip-code" type="text" value="{{company.address.zip_code}}"
+                        placeholder="Zip Code" class="form-control" />
+                </div>
+
+                <div class="form-group col-11">
+                    <button type="submit" class="btn btn-sm btn-primary">Update Company</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
