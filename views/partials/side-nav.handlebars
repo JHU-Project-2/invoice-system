@@ -1,23 +1,48 @@
-<ul class="nav flex-column bg-primary side-navbar">
-  <li class="nav-item">
-    <a class="nav-link" href="/dashboard">Dashboard</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Clients</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Projects</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Products</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Invoices</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Contact Us</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="logout">Sign Out</a>
-  </li>
-</ul>
+<!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+  <div class="sidebar">
+    <div class="logo-details">
+        <a class="logo_name" href="/">Arpad</a>
+        <i class='bx bx-menu' id="btn" ></i>
+    </div>
+    <ul class="nav-list">
+      <li>
+        
+        <a id="add-contact" href="/add-contact"><i id="add-contact-icon" class="menu-icon bx bx-bolt-circle"></i><span class="menu-text">Add Contact</span></a>
+      </li>
+      <li>
+        <a  id="add-company" href="/add-company"><i id="add-company-icon" class="menu-icon bx bx-bolt-circle"></i><span class="menu-text">Add New Company</span></a>
+      </li>
+    </ul>
+   
+  </div>
+  <script>
+  let sidebar = document.querySelector(".sidebar");
+  let closeBtn = document.querySelector("#btn");
+  let menuText = document.getElementById("add-contact");
+  let menuText2 = document.getElementById("add-company");
+  let menuIcon = document.querySelector(".menu-icon");
+
+  closeBtn.addEventListener("click", ()=>{
+    sidebar.classList.toggle("open");
+    menuBtnChange();//calling the function(optional)
+  });
+
+  // following are the code to change sidebar button(optional)
+  function menuBtnChange() {
+   if(sidebar.classList.contains("open")){
+     menuText.classList.replace("menu-text show");
+     menuText2.classList.replace("menu-text show");
+     menuIcon.classList.replace("menu-icon hide bx bx-bolt-circle");
+     closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
+   } else {
+     menuText.classList.replace("menu-text hide");
+     menuText2.classList.replace("menu-text hide");
+     menuIcon.classList.replace("menu-icon hide bx bx-bolt-circle");
+     closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns class
+   }
+  }
+  </script>
+
+
