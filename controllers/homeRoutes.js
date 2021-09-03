@@ -38,6 +38,13 @@ router.get('/login', (req, res) => {
     title: "Login"
   });
 });
+router.get('/logout', (req, res) => {
+
+
+  res.render('logout', {
+    title: "Logout",
+  });
+});
 // ! FRONT END ROUTES
 
 

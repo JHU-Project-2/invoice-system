@@ -1,5 +1,8 @@
-{{#each companies}}
-  <a href="/dashboard/company/{{id}}">
-    <h4 class="company"> {{name}} </h4>
-  </a>
-{{/each}}
+<ul class="list-group">
+  {{#each companies}}
+    <a href="/dashboard/company/{{id}}">
+      <li class="list-group-item">{{name}}</li>
+    </a>
+  {{/each}}
+
+</ul>

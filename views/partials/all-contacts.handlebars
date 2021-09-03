@@ -10,7 +10,10 @@
     <tbody>
         {{#each companies}}
             <tr>
-                <th>{{name}}</th>
+                <th><a href="/dashboard/company/{{id}}">
+                        {{name}}
+                    </a>
+                </th>
                 <td>{{contact.name}}</td>
                 <td>{{contact.phone}}</td>
                 <td>{{contact.email}}</td>

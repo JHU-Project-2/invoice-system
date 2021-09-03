@@ -1,15 +1,12 @@
-<!-- Boxicons CDN Link -->
-<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+<link rel="stylesheet" href="/css/boxicon.css">
 <link rel="stylesheet" href="/css/side-nav.css">
 
-<div class="sidebar mySidenav">
+<nav class="navbar-expand-lg sidebar mySidenav">
   <div class="logo-details mb-2">
     <a class="logo_name" href="/">
       <img src="/img/logo-white.png"></a>
-
-    <i class='bx bx-menu' id="btn"></i>
-
-
+    {{!-- <i class='bx bx-menu' id="btn"></i> --}}
+    <i id="btn" class="fas fa-bars"></i>
   </div>
   <ul class="nav-list">
     <li>
@@ -42,6 +39,6 @@
 
   </ul>
 
-</div>
 
+</nav>
 <script src="/js/side-nav.js"></script>
