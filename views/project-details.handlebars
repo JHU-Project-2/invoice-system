@@ -1,24 +1,34 @@
-<div class="card">
-    <div class="card-header">
-        <h3>{{project.title}}</h3>
+{{!-- CRUD MENU --}}
+<div class="card-header mb-2">
+    <a class="btn btn-sm btn-primary delete-project-btn mb-2" data-project-id="{{project.id}}">
+        Delete Project
+    </a>
+
+
+
+    <div class="card">
+        <div class="card-header">
+            <h3>{{project.title}}</h3>
+        </div>
+        <div class="card-body">
+
+            <h5>Project Type: {{project.type}}</h5>
+            <h5>Due: {{format_date project.due_date}}</h5>
+            <h5>Total Price: ${{format_amount project.price}}</h5>
+        </div>
     </div>
-    <div class="card-body">
 
-        <h5>Project Type: {{project.type}}</h5>
-        <h5>Due: {{format_date project.due_date}}</h5>
-        <h5>Total Price: ${{format_amount project.price}}</h5>
+
+    {{!-- Shows the titles of each invoice --}}
+    <h3 class="card-header">INVOICES</h3>
+
+    <div class="card" style="width: 18rem;">
+        <ul class="list-group list-group-flush">
+            {{#each project.invoices}}
+                <a href="/dashboard/invoice/{{id}}">
+                    <li class="list-group-item">{{name}}</li>
+            {{/each}}
+        </ul>
     </div>
-</div>
 
-
-{{!-- Shows the titles of each invoice --}}
-<h3 class="card-header">INVOICES</h3>
-
-<div class="card" style="width: 18rem;">
-    <ul class="list-group list-group-flush">
-        {{#each project.invoices}}
-            <a href="/dashboard/invoice/{{id}}">
-                <li class="list-group-item">{{name}}</li>
-        {{/each}}
-    </ul>
-</div>
+    <script src="/js/delete-project.js"></script>

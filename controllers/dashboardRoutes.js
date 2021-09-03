@@ -5,6 +5,7 @@ const withAuth = require("../utils/auth");
 
 // route for /dashboard
 
+// Front End route for dashboard
 router.get('/', withAuth, async (req, res) => {
     try {
         // Get all projects and JOIN with user data
@@ -51,6 +52,7 @@ router.get('/', withAuth, async (req, res) => {
         res.status(500).json(err);
     }
 });
+// Front End route for add company
 router.get('/add-company', withAuth, async (req, res) => {
     try {
         // Get all companies and JOIN with address and contact data
@@ -92,7 +94,79 @@ router.get('/add-company', withAuth, async (req, res) => {
         res.status(500).json(err);
     }
 });
+// Front End route for add Project
+router.get('/add-project/:id', withAuth, async (req, res) => {
+    try {
+        // Get all companies and JOIN with address and contact data
+        const companyData = await Company.findOne({
+            where: {
+                id: req.params.id
+            },
+            include: {
+                model: Address,
+                attributes: [
+                    'address_1',
+                    'address_2',
+                    'city',
+                    'state',
+                    'zip_code',
+                ]
+            },
+            include: {
+                model: Contact,
+                attributes: [
+                    'id',
+                    'name',
+                    'email',
+                    'phone',
+                    'company_id'
+                ],
+            },
+            include: [
+                {
+                    model: Project,
+                    attributes: [
+                        'title',
+                        'type',
+                        'price',
+                        'due_date',
 
+                    ],
+                    include: {
+                        model: Invoice,
+                        attributes: [
+                            'name',
+                            'is_paid',
+
+                        ],
+                        include: {
+                            model: Item,
+                            attributes: [
+                                'description',
+                                'units',
+                                'unit_price',
+
+                            ]
+                        },
+                    },
+                },
+            ],
+        });
+
+        // Serialize data so the template can read it
+        const companies = companyData.map((company) => company.get({ plain: true }));
+        console.log(companies)
+        // Pass serialized data and session flag into template
+        res.render('add-project', {
+            companies,
+            logged_in: req.session.logged_in,
+            title: "Add Project"
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+// Front End route for one Company
 router.get("/company/:id", (req, res) => {
     Company.findOne({
         where: {
@@ -164,6 +238,7 @@ router.get("/company/:id", (req, res) => {
             res.status(500).json(err);
         });
 });
+// Front End route for one project
 router.get("/project/:id", (req, res) => {
     Project.findOne({
         where: {
@@ -206,6 +281,7 @@ router.get("/project/:id", (req, res) => {
             res.status(500).json(err);
         });
 });
+// Front End route for one invoice
 //! working but cannot get project data this way
 router.get("/invoice/:id", (req, res) => {
     Invoice.findOne({
@@ -249,7 +325,7 @@ router.get("/invoice/:id", (req, res) => {
         });
 });
 
-// Edit Company Route
+// Edit Company FRONT END Route
 router.get("/edit/:id", withAuth, (req, res) => {
 
     Company.findOne({
