@@ -20,13 +20,13 @@ closeBtn.addEventListener("click", () => {
 // following are the code to change sidebar button(optional)
 function menuBtnChange() {
     if (sidebar.classList.contains("open")) {
-        menuText.classList.replace("menu-text show");
-        menuText2.classList.replace("menu-text show");
+        //  menuText.classList.replace("menu-text show");
+        // menuText2.classList.replace("menu-text show");
         menuIcon.classList.replace("menu-icon hide bx bx-bolt-circle");
         closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
     } else {
-        menuText.classList.replace("menu-text hide");
-        menuText2.classList.replace("menu-text hide");
+        // menuText.classList.replace("menu-text hide");
+        // menuText2.classList.replace("menu-text hide");
         menuIcon.classList.replace("menu-icon hide bx bx-bolt-circle");
         closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");//replacing the iocns class
     }

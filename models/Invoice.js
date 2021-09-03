@@ -20,6 +20,14 @@ Invoice.init(
             defaultValue: false,
             allowNull: false
         },
+        is_paid: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
+            allowNull: false
+        },
+        due_date: {
+            type: DataTypes.DATE,
+        },
         project_id: {
             type: DataTypes.INTEGER,
             references: {
