@@ -151,23 +151,58 @@ router.get('/:id', (req, res) => {
 
 //  Add Company route
 router.post("/", withAuth, async (req, res) => {
-  try {
-    const newCompany = await Company.create({
-      name: req.body.name,
-      user_id: req.session.user_id,
+  const company = await Company.create({
+    user_id: req.session.user_id,
+    include: [
+      {
+        model: Contact,
+        attributes: [
+          'id',
+          'name',
+          'email',
+          'phone',
+          'company_id'
+        ],
+      },
+      {
+        model: Address,
+        attributes: [
+          "id",
+          'address_1',
+          'address_2',
+          'city',
+          'state',
+          'zip_code',
+        ],
 
-    });
-    console.log(newCompany)
-    res.status(200).json(newCompany);
+      },
+    ]
+  });
 
-  } catch (err) {
-    res.status(400).json(err);
-  }
+  company.name = req.body.companyName;
+  company.contact.name = req.body.contactName;
+  company.contact.email = req.body.contactEmail;
+  company.contact.phone = req.body.contactPhone;
+  company.address.address_1 = req.body.address1;
+  company.address.address_2 = req.body.address2;
+  company.address.city = req.body.city;
+  company.address.state = req.body.state;
+  company.address.zip_code = req.body.zipCode;
+
+  console.log(company)
+  await company.save()
+  await company.contact.save()
+  await company.address.save()
+
+
+
+  res.status(200).json(company);
+
+
+
 });
 // Update Company Route
 router.put('/:id', withAuth, async (req, res) => {
-
-
   let company = await Company.findOne({
     where: {
       id: req.params.id,

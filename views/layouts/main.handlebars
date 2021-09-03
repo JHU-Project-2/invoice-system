@@ -20,16 +20,22 @@
     <div class="row justify-content-end">
       <div>
         {{#if logged_in}}
+
           <a href="#" class="nav-link text-light loggin_out" id="logout"> Logout</a>
+
         {{else}}
+
           <a class="nav-link text-light loggin_out" href="/login">Login</a>
+
         {{/if}}
       </div>
     </div>
   </div>
 
   <div class="container-fluid">
+
     <div class="row mt-1">
+
       <div class="col-1">
         {{>side-nav}}
       </div>
