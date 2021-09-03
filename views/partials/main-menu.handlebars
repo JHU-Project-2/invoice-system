@@ -12,24 +12,6 @@
 			</li>
 
 		</ul>
-		<ul class="nav justify-content-end">
-			{{!-- BACK BUTTON --}}
-			<button class="btn btn-sm btn-primary" onclick="goBack()">Go Back</button>
-			<script>
-				function goBack() {
-					window.history.back();
-				}
-			</script>
-			{{!-- END BACK BUTTON --}}
-			{{#if logged_in}}
-				<li class="nav-item">
-					<a class="nav-link text-light" id="logout">Logout</a>
-				</li>
-			{{else}}
-				<li class="nav-item">
-					<a class="nav-link text-light" href="/login">Login</a>
-				</li>
-			{{/if}}
-		</ul>
+
 	</div>
 </nav>

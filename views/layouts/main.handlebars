@@ -16,11 +16,20 @@
 </head>
 
 <body>
-  {{>main-menu}}
-  <div class="mt-2">
-    {{{body}}}
-  </div>
 
+
+  <div class="container-fluid">
+
+    <div class="row mt-1">
+
+      <div class="col-1">
+        {{>side-nav}}
+      </div>
+      <div class="col-11">
+        {{{body}}}
+      </div>
+    </div>
+  </div>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
