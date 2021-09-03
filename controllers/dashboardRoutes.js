@@ -171,9 +171,82 @@ router.get('/add-project/:id', (req, res) => {
             res.status(500).json(err);
         });
 });
+router.get('/add-invoice/:id', (req, res) => {
+    Company.findOne({
+        where: {
+            id: req.params.id,
+        },
+        attributes: [
+            "id",
+            "name"
+        ],
+        include: [
+            {
+                model: Address,
+                attributes: [
+                    "id",
+                    "address_1",
+                    "address_2",
+                    "city",
+                    "state",
+                    "zip_code"
+                ],
+            },
+            {
+                model: Contact,
+                attributes: [
+                    "id",
+                    "name",
+                    "email",
+                    "phone"
+                ],
+            },
+            {
+                model: Project,
+                attributes: [
+                    "id",
+                    "title",
+                    "type",
+                    "price",
+                    "due_date",
 
-
-
+                ],
+                include: {
+                    model: Invoice,
+                    attributes: [
+                        "id",
+                        "name"
+                    ],
+                    include: {
+                        model: Item,
+                        attributes: [
+                            'description',
+                            'units',
+                            'unit_price',
+                        ]
+                    },
+                },
+            }
+        ],
+    })
+        .then((companyData) => {
+            if (!companyData) {
+                res.status(404).json({ message: "No company found with this id" });
+                return;
+            }
+            const company = companyData.get({ plain: true });
+            console.log(company);
+            res.render("add-invoice", {
+                company,
+                logged_in: true,
+                title: "Add Invoice",
+            });
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
 // Front End route for one Company
 router.get("/company/:id", (req, res) => {
     Company.findOne({

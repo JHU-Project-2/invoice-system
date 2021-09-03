@@ -1,13 +1,11 @@
 {{!-- CRUD MENU --}}
 <div class="card-header mb-2">
-  <a href="/add-contact">
-    <button class="btn btn-sm btn-primary">Add Contact</button>
-  </a>
+
   <a class="btn btn-sm btn-primary edit-company-btn" href="/dashboard/edit/{{company.id}}">
     Edit Company
   </a>
 
-  {{!-- add data attribute  --}}
+
   <button class="btn btn-sm btn-primary delete-company-btn" data-company-id="{{company.id}}">Delete Company</button>
 
   <a href="/dashboard/add-project/{{company.id}}">

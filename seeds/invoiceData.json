@@ -2,36 +2,43 @@
 	{
 		"id": 1,
 		"name": "Preliminary Design",
+		"isPaid": true,
 		"project_id": 1
 	},
 	{
 		"id": 2,
 		"name": "Start Website",
+		"isPaid": false,
 		"project_id": 1
 	},
 	{
 		"id": 3,
 		"name": "Finished/Deployed Website",
+		"isPaid": false,
 		"project_id": 1
 	},
 	{
 		"id": 4,
 		"name": "First Draft",
+		"isPaid": true,
 		"project_id": 2
 	},
 	{
 		"id": 5,
 		"name": "Final Draft",
+		"isPaid": true,
 		"project_id": 2
 	},
 	{
 		"id": 6,
 		"name": "Database Design",
+		"isPaid": true,
 		"project_id": 3
 	},
 	{
 		"id": 7,
 		"name": "Implementation",
+		"isPaid": true,
 		"project_id": 3
 	},
 	{
@@ -42,6 +49,7 @@
 	{
 		"id": 9,
 		"name": "Final Product",
+		"isPaid": true,
 		"project_id": 4
 	},
 	{
@@ -52,6 +60,7 @@
 	{
 		"id": 11,
 		"name": "Final Delivery",
+		"isPaid": true,
 		"project_id": 5
 	}
 ]

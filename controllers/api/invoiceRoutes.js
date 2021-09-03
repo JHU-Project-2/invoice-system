@@ -32,18 +32,23 @@ router.get('/:id', async (req, res) => {
         res.status(500).json(err);
     }
 });
-// CREATE an invoice
-router.post('/', async (req, res) => {
-    try {
-        const invoiceData = await Invoice.create({
-            reader_id: req.body.reader_id,
-        });
-        res.status(200).json(invoiceData);
-    } catch (err) {
-        res.status(400).json(err);
-    }
-});
 
+// CREATE an invoice
+router.post('/', (req, res) => {
+    Invoice.create({
+        name: req.body.name,
+        is_paid: req.body.isPaid,
+        due_date: req.body.due_date,
+        project_id: req.body.project_id,
+
+        user_id: req.session.user_id
+    })
+        .then(projectData => res.json(projectData))
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
 
 // DELETE an invoice
 router.delete('/:id', async (req, res) => {

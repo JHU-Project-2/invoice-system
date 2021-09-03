@@ -1,0 +1,23 @@
+<h1>Add Invoice</h1>
+
+<form id="add-invoice-form">
+    <div class="form-group">
+        <div class="form-group">
+            <input type="text" class="form-control" name="name" placeholder="Invoice Name" />
+            <input type="text" class="form-control" name="due-date" placeholder="Invoice Due Date (YYYY-MM-DD)" />
+        </div>
+        {{!-- <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="isPaid">
+            <label class="form-check-label" id="isPaid" for="isPaid">Paid?</label>
+
+        </div> --}}
+
+    </div>
+
+    <div class="form-group form-check">
+        <button type="submit" class="btn btn-sm btn-primary m-2">Submit</button>
+    </div>
+
+</form>
+
+<script src="/js/add-invoice.js"></script>
