@@ -1,7 +1,25 @@
 /* Google Font Link */
+body {
+  background-color: rgb(155, 153, 153);
+}
+
+.add-company-partial {
+  padding-top: 50px;
+}
 
 img {
   width: 60%;
+}
+
+.dark-logo {
+  width: 15%;
+  float: right;
+  padding: 10px;
+  margin: 5px;
+}
+
+.row {
+  display: flex;
 }
 
 .nav-link {
