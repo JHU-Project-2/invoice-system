@@ -1,24 +1,32 @@
-
+const form = document.querySelector('#send-email-form')
 
 async function sendEmail(event) {
     event.preventDefault();
 
-    var senderEmail = document.getElementById('senderEmail').textContent
-    var recipientEmail = document.getElementById('recipientEmail').textContent
-    var subject = document.getElementById('subject').textContent
-    var message = document.getElementById('message').textContent
+    var to = document.getElementById('to')
+    var from = document.getElementById('from')
+    var subject = document.getElementById('subject')
+    var message = document.getElementById('message')
 
-    console.log(recipientEmail)
+    const data = {
+        to: to.value,
+        from: from.value,
+        subject: subject.value,
+        text: message.value
+    }
+
+    console.log(data)
 
 
-    if (senderEmail && recipientEmail) {
+
+    if (to && from && subject) {
         const response = await fetch("/send", {
             method: "POST",
             body: JSON.stringify({
-                senderEmail,
-                recipientEmail,
-                subject,
-                message
+                to: to.value,
+                from: from.value,
+                subject: subject.value,
+                text: message.value
             }),
             headers: {
                 "Content-Type": "application/json",
@@ -26,10 +34,11 @@ async function sendEmail(event) {
         });
 
         if (response.ok) {
-            document.location.replace(`/dashboard/company/${company_id}`);
+            alert("'Email sent successfully!")
+            document.location.reload(`/dashboard/invoice/${id}`);
 
         } else {
-            alert(response.statusText);
+            alert("Error!" + response.statusText + ": Something went wrong 😬");
         }
     }
 }
