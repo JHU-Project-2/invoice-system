@@ -1,10 +1,12 @@
+<div class="add-company-partial">
 <h1>Add Company</h1>
 
 <form id="add-company-form">
   <div class="form-group">
     <input type="text" class="form-control" id="company-name" placeholder="Company Name" />
   </div>
-
+  <br>
+  <br>
   <h3>Company Contact</h3>
   <div class="form-group col-11">
     <input name="contact-name" type="text" value="{{company.contact.name}}" placeholder="Contact Name"
@@ -12,7 +14,10 @@
     <input name="contact-email" type="text" value="{{company.contact.email}}" placeholder="Email" class="form-input" />
     <input name="contact-phone" type="text" value="{{company.contact.phone}}" placeholder="Phone" class="form-input" />
   </div>
+  <br>
+  <br>
   <h3>Company Address</h3>
+
   <div class="form-group col-11">
     <input name="contact-address-1" type="text" value="{{company.address.address_1}}" placeholder="Address"
       class="form-input" />
@@ -28,5 +33,6 @@
   </div>
 
 </form>
+</div>
 
 <script src="/js/add-company.js"></script>
