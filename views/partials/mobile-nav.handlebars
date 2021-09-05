@@ -1,23 +1,45 @@
-{{!-- Top Nav for mobile view --}}
+{{! Top Nav for mobile view }}
 <nav class="navbar mobile-nav navbar-expand-sm navbar-dark bg-dark">
-  <a class="logo-name" href="/">Home</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <div class="d-flex justify-content-between">
+    <a class="logo-name" href="/"><img
+        class="mobile-logo"
+        src="/img/icon-white.png"
+      /></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
   <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/dashboard">Dashboard</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
+        <a class="nav-link" href="/dashboard/add-contact">Add Contact</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
+        <a class="nav-link" href="/dashboard/add-company">Add Company</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        <a class="nav-link" href="/dashboard/edit/{{company.id}}">Edit Company</a>
       </li>
+
+      {{! BACK BUTTON }}
+      <li class="nav-item">
+        <a class="nav-link"href="#" onclick="goBack()">Back</a>
+        <script>
+          function goBack() { window.history.back(); }
+        </script>
+      </li>
+      {{! END BACK BUTTON }}
     </ul>
   </div>
 </nav>
