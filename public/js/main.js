@@ -11,7 +11,7 @@ if (window.location.pathname === "/") {
     darkLogo.setAttribute("style", "display: none;");
 } else if (window.location.pathname === "/login") {
     darkLogo.setAttribute("style", "display: block; width: 30%; float: left; margin-left: 65vh; margin-top: 15vh;" )
-} else if (window.location.pathname === "/dashboard/invoice/1" || window.location.pathname === "/dashboard/add-company") {
+} else if (window.location.pathname.includes === "/dashboard/invoice" || window.location.pathname === "/dashboard/add-company") {
     darkLogo.setAttribute("style", "display: block; width: 10%; margin-top: 40vh;")
 }
 

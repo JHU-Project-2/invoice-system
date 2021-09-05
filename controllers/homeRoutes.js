@@ -57,10 +57,10 @@ router.get('/logout', (req, res) => {
 router.post('/send', (req, res) => {
   console.log(req.body)
 
-  // const output = `
-  // <p>This is the invoice template literal</p>
-  //     
-  // `;
+  const output = `
+  <p>This is the invoice template literal</p>
+      
+  `;
   // create reusable transporter object using the default SMTP transport
   // GMAIL
   const transporter = nodemailer.createTransport({
@@ -95,10 +95,11 @@ router.post('/send', (req, res) => {
   // };
 
   const mailOptions = {
-    to: req.body.to,
     from: req.body.from,
-    subject: `New Invoice from ${req.body.email}: ${req.body.subject}`,
+    to: req.body.to,
+    subject: `New Invoice from ${req.body.from}: ${req.body.subject}`,
     text: req.body.text,
+    html: output
 
   };
 
