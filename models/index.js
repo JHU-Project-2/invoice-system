@@ -5,6 +5,7 @@ const Address = require('./Address');
 const Project = require('./Project');
 const Invoice = require('./Invoice');
 const Item = require('./Item');
+const BillingAddress = require('./BillingAddress');
 
 
 
@@ -20,6 +21,10 @@ Company.hasOne(Contact, {
 
 Company.hasOne(Address, {
     foreignKey: "company_id",
+    onDelete: "cascade",
+})
+Invoice.hasOne(BillingAddress, {
+    foreignKey: "invoice_id",
     onDelete: "cascade",
 })
 Company.hasMany(Project, {

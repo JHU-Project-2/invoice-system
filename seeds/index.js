@@ -6,7 +6,9 @@ const contactData = require("./contactData.json");
 const addressData = require("./addressData.json");
 const projectData = require("./projectData.json");
 const invoiceData = require("./invoiceData.json");
+const BillingAddressData = require("./BillingAddressData.json");
 const itemData = require("./itemData.json");
+const BillingAddress = require("../models/BillingAddress");
 
 
 const seedDatabase = async () => {
@@ -37,6 +39,10 @@ const seedDatabase = async () => {
     returning: true,
   });
   await Item.bulkCreate(itemData, {
+    individualHooks: true,
+    returning: true,
+  });
+  await BillingAddress.bulkCreate(BillingAddressData, {
     individualHooks: true,
     returning: true,
   });
