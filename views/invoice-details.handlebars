@@ -31,7 +31,6 @@
 <table class="table">
     <thead>
         <tr>
-
             <th scope="col">Description</th>
             <th scope="col">Units</th>
             <th scope="col">Unit Price</th>
@@ -47,17 +46,14 @@
                 <td class="ppu">{{unit_price}}</td>
                 <td class="total"></td>
                 <td>
-                    <button class="btn btn-sm btn-primary delete-item-btn" data-item-id="{{id}}"><i
-                            class="fas fa-trash"></i></button>
+                    <button class="btn btn-sm btn-primary delete-item-btn" data-item-id="{{id}}">
+                        <i class="fas fa-trash"></i>
+                    </button>
                 </td>
             </tr>
         {{/each}}
     </tbody>
 </table>
-
-
-
-
 
 
 {{>send-email}}
