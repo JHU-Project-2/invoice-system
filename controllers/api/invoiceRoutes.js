@@ -7,7 +7,18 @@ const withAuth = require('../../utils/auth');
 router.get('/', async (req, res) => {
     try {
         const invoiceData = await Invoice.findAll({
-            include: [{ model: Item }],
+            include: [
+                {
+                    model: Item,
+                    attributes: [
+                        'id',
+                        'description',
+                        'units',
+                        'unit_price',
+
+                    ]
+                }
+            ],
         });
         res.status(200).json(invoiceData);
     } catch (err) {
