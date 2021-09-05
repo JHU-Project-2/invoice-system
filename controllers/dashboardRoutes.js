@@ -144,6 +144,7 @@ router.get('/add-project/:id', (req, res) => {
                     include: {
                         model: Item,
                         attributes: [
+                            'id',
                             'description',
                             'units',
                             'unit_price',
@@ -155,7 +156,7 @@ router.get('/add-project/:id', (req, res) => {
     })
         .then((companyData) => {
             if (!companyData) {
-                res.status(404).json({ message: "No post found with this id" });
+                res.status(404).json({ message: "No company found with this id" });
                 return;
             }
             const company = companyData.get({ plain: true });
@@ -220,6 +221,7 @@ router.get('/add-invoice/:id', (req, res) => {
                     include: {
                         model: Item,
                         attributes: [
+                            'id',
                             'description',
                             'units',
                             'unit_price',
@@ -362,7 +364,6 @@ router.get("/project/:id", (req, res) => {
         });
 });
 // Front End route for one invoice
-//! working but cannot get project data this way
 router.get("/invoice/:id", (req, res) => {
     Invoice.findOne({
         where: {
@@ -377,6 +378,7 @@ router.get("/invoice/:id", (req, res) => {
                 model: Item,
                 attributes:
                     [
+                        "id",
                         "description",
                         "units",
                         "unit_price",
@@ -404,7 +406,6 @@ router.get("/invoice/:id", (req, res) => {
             res.status(500).json(err);
         });
 });
-
 // Edit Company FRONT END Route
 router.get("/edit/:id", withAuth, (req, res) => {
 

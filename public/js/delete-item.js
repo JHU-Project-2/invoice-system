@@ -4,6 +4,8 @@ async function deleteItemHandler(event) {
 
     const id = event.target.getAttribute("data-item-id")
 
+    console.log(id)
+
 
     const response = await fetch(`/api/item/${id}`, {
 

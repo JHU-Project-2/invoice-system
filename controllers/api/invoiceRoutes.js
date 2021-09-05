@@ -30,7 +30,17 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const invoiceData = await Invoice.findByPk(req.params.id, {
-            include: [{ model: Item }],
+            include: [
+                {
+                    model: Item,
+                    attributes: [
+                        'id',
+                        'description',
+                        'units',
+                        'unit_price',
+
+                    ]
+                }],
         });
 
         if (!invoiceData) {
