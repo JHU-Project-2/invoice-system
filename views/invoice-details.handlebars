@@ -6,24 +6,32 @@
     <a href="/dashboard/delete-invoice">
         <button class="btn btn-sm btn-primary">Delete Invoice</button>
     </a>
-    <a href="/dashboard/edit-invoice">
-        <button class="btn btn-sm btn-primary">Edit Invoice</button>
-    </a>
+
     <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#emailModal">
         Send Invoice
     </button>
 </div>
 
 <h1>Invoice Details</h1>
-<h4>{{project.title}}</h4>
 {{!-- this is where the actual invoice template will go --}}
 
 <div class="card">
-    <div class="card-header">
-        {{invoice.name}}
+    <div class="card-header d-flex justify-content-between">
+        <p>Invoice: {{invoice.name}}</p>
+        <p>Invoice Number: {{invoice.id}}</p>
     </div>
     <div class="card-body">
-
+        <p>Company Name: </p>
+        <p>Pay By: </p>
+        <p>Date: </p>
+    </div>
+    <div class="card-header">
+        <h3>Bill To:</h3>
+    </div>
+    <div class="card-body">
+        <p>Company Name </p>
+        <p>Pay By: </p>
+        <p>Date: </p>
     </div>
 </div>
 
@@ -52,6 +60,10 @@
                 </td>
             </tr>
         {{/each}}
+        <tr>
+            <th>TOTAL</th>
+            <td>$</th>
+        </tr>
     </tbody>
 </table>
 

@@ -296,8 +296,7 @@ router.get("/company/:id", (req, res) => {
                         "id",
                         "name"
                     ]
-                }
-
+                },
             }
         ],
 
@@ -389,7 +388,7 @@ router.get("/invoice/:id", (req, res) => {
     })
         .then((invoiceData) => {
             if (!invoiceData) {
-                res.status(404).json({ message: "No post found with this id" });
+                res.status(404).json({ message: "No Invoice found with this id" });
                 return;
             }
             const invoice = invoiceData.get({ plain: true });
@@ -406,6 +405,8 @@ router.get("/invoice/:id", (req, res) => {
             res.status(500).json(err);
         });
 });
+
+
 // Edit Company FRONT END Route
 router.get("/edit/:id", withAuth, (req, res) => {
 

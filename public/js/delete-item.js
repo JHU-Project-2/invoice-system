@@ -1,10 +1,10 @@
 
 async function deleteItemHandler(event) {
     event.preventDefault();
-
+    console.log("YOU CLICKED THE BUTTON")
     const id = event.target.getAttribute("data-item-id")
 
-    console.log(id)
+
 
 
     const response = await fetch(`/api/item/${id}`, {
