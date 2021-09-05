@@ -31,9 +31,10 @@
 <table class="table">
     <thead>
         <tr>
+
             <th scope="col">Description</th>
             <th scope="col">Units</th>
-            <th scope="col">PPU</th>
+            <th scope="col">Unit Price</th>
             <th scope="col">Line Total</th>
             <th scope="col">Delete</th>
         </tr>
@@ -41,17 +42,14 @@
     <tbody>
         {{#each invoice.items}}
             <tr>
-                <td>{{description}}</td>
-                <td>{{units}}</td>
-                <td>{{unit_price}}</td>
-                {{!-- HOW DO WE TOTAL THE COLUMNS? --}}
-                <td>Line Total Here</td>
+                <td class="description">{{description}}</td>
+                <td class="units">{{units}}</td>
+                <td class="ppu">{{unit_price}}</td>
+                <td class="total"></td>
                 <td>
-                    <button class="delete-item-btn" data-item-id="{{item.id}}">
-                        <i class="fas fa-trash"></i>
-                    </button>
+                    <button class="btn btn-sm btn-primary delete-item-btn" data-item-id="{{id}}"><i
+                            class="fas fa-trash"></i></button>
                 </td>
-
             </tr>
         {{/each}}
     </tbody>
@@ -66,3 +64,4 @@
 
 {{>add-item}}
 {{projectInvoice}}
+<script src="/js/line-total.js"></script>

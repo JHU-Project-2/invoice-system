@@ -115,6 +115,7 @@ router.get('/:id', (req, res) => {
         include: {
           model: Item,
           attributes: [
+            'id',
             'description',
             'units',
             'unit_price',
