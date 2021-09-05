@@ -15,9 +15,9 @@ Company.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        // user_id: {
-        //     type: DataTypes.INTEGER
-        // }
+        user_id: {
+            type: DataTypes.INTEGER
+        }
     },
     {
         sequelize,
