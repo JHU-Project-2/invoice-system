@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const sequelize = require("../config/connection");
 const { Company, Project, User, Address, Contact, Invoice, Item } = require("../models");
+const BillingAddress = require("../models/BillingAddress");
 const withAuth = require("../utils/auth");
 
 // route for /dashboard
@@ -382,6 +383,12 @@ router.get("/invoice/:id", (req, res) => {
                         "units",
                         "unit_price",
                     ]
+            }
+        ],
+        include: [
+            {
+                model: BillingAddress,
+                
             }
         ],
 
