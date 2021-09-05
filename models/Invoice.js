@@ -24,6 +24,10 @@ Invoice.init(
         due_date: {
             type: DataTypes.DATE,
         },
+        invoice_amount: {
+            type: DataTypes.INTEGER,
+        },
+
         project_id: {
             type: DataTypes.INTEGER,
             references: {

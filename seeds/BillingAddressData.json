@@ -6,6 +6,7 @@
 		"city": "Baltimore",
 		"state": "MD",
 		"zip_code": 21208,
+		"pay_by": "2021-06-13",
 		"invoice_id": 1
 	},
 	{
@@ -15,6 +16,7 @@
 		"city": "Baltimore",
 		"state": "MD",
 		"zip_code": 21208,
+		"pay_by": "2021-06-13",
 		"invoice_id": 2
 	},
 	{
@@ -24,6 +26,7 @@
 		"city": "Baltimore",
 		"state": "MD",
 		"zip_code": 21208,
+		"pay_by": "2021-06-13",
 		"invoice_id": 3
 	},
 	{
@@ -33,6 +36,7 @@
 		"city": "Baltimore",
 		"state": "MD",
 		"zip_code": 21208,
+		"pay_by": "2021-06-13",
 		"invoice_id": 4
 	}
 ]
