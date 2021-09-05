@@ -57,3 +57,17 @@ a:hover {
 .og-margin {
   padding-left: 85px;
 }
+
+.mobile-nav {
+  display: none;
+}
+
+@media (max-width: 576px) {
+  .mobile-nav {
+    display: block;
+  }
+
+  .sidebar {
+    display: none;
+  }
+};
