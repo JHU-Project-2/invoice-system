@@ -21,18 +21,21 @@
         <p>Invoice Number: {{invoice.id}}</p>
     </div>
     <div class="card-body">
-        <p>Company Name: </p>
-        <p>Pay By: </p>
-        <p>Date: </p>
+        <h6>Pay By: {{format_date invoice.BillingAddress.pay_by}}</h6>
+        <h6>Amount Owed: ${{format_amount invoice.invoice_amount}}</h6>
     </div>
     <div class="card-header">
         <h3>Bill To:</h3>
-        {{invoice.BillingAddress.address_1}}        
     </div>
     <div class="card-body">
-        <p>Company Name </p>
-        <p>Pay By: </p>
-        <p>Date: </p>
+        <h4>Company Name: {{invoice.BillingAddress.company_name}} </h4>
+        <h6>Address:</h6>
+        {{invoice.BillingAddress.address_1}}, {{invoice.BillingAddress.address_2}}</p>
+        <p>{{invoice.BillingAddress.city}}, {{invoice.BillingAddress.state}} {{invoice.BillingAddress.zip_code}}</p>
+
+
+
+
     </div>
 </div>
 

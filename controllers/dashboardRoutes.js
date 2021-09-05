@@ -140,7 +140,8 @@ router.get('/add-project/:id', (req, res) => {
                     model: Invoice,
                     attributes: [
                         "id",
-                        "name"
+                        "name",
+                        "invoice_amount"
                     ],
                     include: {
                         model: Item,
@@ -217,7 +218,8 @@ router.get('/add-invoice/:id', (req, res) => {
                     model: Invoice,
                     attributes: [
                         "id",
-                        "name"
+                        "name",
+                        "invoice_amount"
                     ],
                     include: {
                         model: Item,
@@ -295,7 +297,8 @@ router.get("/company/:id", (req, res) => {
                     model: Invoice,
                     attributes: [
                         "id",
-                        "name"
+                        "name",
+                        "invoice_amount"
                     ]
                 },
             }
@@ -340,6 +343,7 @@ router.get("/project/:id", (req, res) => {
                 attributes: [
                     "id",
                     "name",
+                    "invoice_amount"
                 ],
             },
         ],
@@ -372,6 +376,7 @@ router.get("/invoice/:id", (req, res) => {
         attributes: [
             "id",
             "name",
+            "invoice_amount"
         ],
         include: [
             {
@@ -388,7 +393,7 @@ router.get("/invoice/:id", (req, res) => {
         include: [
             {
                 model: BillingAddress,
-                
+
             }
         ],
 

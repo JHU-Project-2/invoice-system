@@ -11,6 +11,7 @@ BillingAddress.init(
             primaryKey: true,
             autoIncrement: true,
         },
+
         address_1: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -29,6 +30,12 @@ BillingAddress.init(
         zip_code: {
             type: DataTypes.INTEGER,
             allowNull: false,
+        },
+        company_name: {
+            type: DataTypes.STRING,
+        },
+        pay_by: {
+            type: DataTypes.DATE,
         },
         invoice_id: {
             type: DataTypes.INTEGER,
