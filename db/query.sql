@@ -25,3 +25,16 @@ FROM
     LEFT OUTER JOIN `invoice` AS `invoices` ON `project`.`id` = `invoices`.`project_id`
 WHERE
     `project`.`id` = '1';
+
+SELECT
+    `invoice`.`id`,
+    `invoice`.`name`,
+    `items`.`id` AS `items.id`,
+    `items`.`description` AS `items.description`,
+    `items`.`units` AS `items.units`,
+    `items`.`unit_price` AS `items.unit_price`
+FROM
+    `invoice` AS `invoice`
+    LEFT OUTER JOIN `item` AS `items` ON `invoice`.`id` = `items`.`invoice_id`
+WHERE
+    `invoice`.`id` = '6';
