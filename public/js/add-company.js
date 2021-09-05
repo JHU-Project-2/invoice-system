@@ -2,6 +2,7 @@ async function addCompanyForm(event) {
   event.preventDefault();
 
   const companyName = document.getElementById("company-name").value;
+
   const contactName = document.querySelector('input[name="contact-name"]').value.trim();
   const contactEmail = document.querySelector('input[name="contact-email"]').value.trim();
   const contactPhone = document.querySelector('input[name="contact-phone"]').value.trim();
@@ -12,7 +13,7 @@ async function addCompanyForm(event) {
   const state = document.querySelector('input[name="contact-state"]').value.trim();
   const zipCode = document.querySelector('input[name="contact-zip-code"]').value.trim();
 
-
+  console.log(companyName)
   const response = await fetch(`/api/company`, {
     method: "POST",
     body: JSON.stringify({

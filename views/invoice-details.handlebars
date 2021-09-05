@@ -1,15 +1,14 @@
 {{!-- CRUD MENU --}}
 <div class="card-header mb-2">
-    <a href="/dashboard/add-item">
-        <button class="btn btn-sm btn-primary">Add Item</button>
-    </a>
+    <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addItemModal">
+        Add Item
+    </button>
     <a href="/dashboard/delete-invoice">
         <button class="btn btn-sm btn-primary">Delete Invoice</button>
     </a>
     <a href="/dashboard/edit-invoice">
         <button class="btn btn-sm btn-primary">Edit Invoice</button>
     </a>
-    <!-- Button trigger modal -->
     <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#emailModal">
         Send Invoice
     </button>
@@ -36,6 +35,7 @@
             <th scope="col">Units</th>
             <th scope="col">PPU</th>
             <th scope="col">Line Total</th>
+            <th scope="col">Delete</th>
         </tr>
     </thead>
     <tbody>
@@ -46,6 +46,12 @@
                 <td>{{unit_price}}</td>
                 {{!-- HOW DO WE TOTAL THE COLUMNS? --}}
                 <td>Line Total Here</td>
+                <td>
+                    <button class="delete-item-btn" data-item-id="{{item.id}}">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </td>
+
             </tr>
         {{/each}}
     </tbody>
@@ -58,5 +64,5 @@
 
 {{>send-email}}
 
-
+{{>add-item}}
 {{projectInvoice}}
