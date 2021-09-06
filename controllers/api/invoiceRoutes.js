@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Invoice, Item } = require('../../models');
+const { Invoice, Item, BillingAddress, } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // GET all invoices - working
@@ -53,21 +53,61 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-// CREATE an invoice
-router.post('/', (req, res) => {
-    Invoice.create({
-        name: req.body.name,
-        is_paid: req.body.isPaid,
-        due_date: req.body.due_date,
-        project_id: req.body.project_id,
+//  Add Company route
+router.post("/", withAuth, async (req, res) => {
+    console.log("req.session", req.session)
+    console.log("req.params", req.params)
 
-        user_id: req.session.user_id
+    const invoice = await Invoice.create({
+        name: req.body.companyName,
+        user_id: req.session.user_id,
+
+        include: [
+
+            {
+                model: BillingAddress,
+                attributes: [
+                    "id",
+                    'address_1',
+                    'address_2',
+                    'city',
+                    'state',
+                    'zip_code',
+                    'company_name',
+                    'pay_by',
+                    'invoice_id',
+                ],
+
+            },
+        ]
+    });
+
+
+    const billingAddress = await BillingAddress.create({
+        address_1: req.body.address_1,
+        address_2: req.body.address_2,
+        city: req.body.city,
+        state: req.body.state,
+        zip_code: req.body.zipCode,
+        company_id: req.body.company_id,
+        company_name: req.body.companyName,
+        pay_by: req.body.payBy,
+
+        invoice_id: req.params.invoice_id,
+
+
+
     })
-        .then(projectData => res.json(projectData))
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
+
+    console.log(invoice)
+    await invoice.save()
+    await billingAddress.save()
+
+    res.status(200).json(invoice);
+
+
+
+
 });
 
 // DELETE an invoice

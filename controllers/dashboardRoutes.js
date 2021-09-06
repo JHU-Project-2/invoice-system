@@ -189,7 +189,9 @@ router.get('/add-invoice/:id', (req, res) => {
         },
         attributes: [
             "id",
-            "name"
+            "name",
+            "due_date",
+            "is_paid"
         ],
         include: {
             model: Item,
@@ -205,7 +207,7 @@ router.get('/add-invoice/:id', (req, res) => {
     )
         .then((companyData) => {
             if (!companyData) {
-                res.status(404).json({ message: "No company found with this id 🤬" });
+                res.status(404).json({ message: "No invoice found with this id 🤬" });
                 return;
             }
             const company = companyData.get({ plain: true });

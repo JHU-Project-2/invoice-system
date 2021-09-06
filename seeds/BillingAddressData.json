@@ -1,6 +1,5 @@
 [
 	{
-		"id": 1,
 		"company_name": "Apple",
 		"address_1": "123 Main St",
 		"address_2": "Unit 4",
@@ -11,7 +10,6 @@
 		"invoice_id": 1
 	},
 	{
-		"id": 2,
 		"company_name": "Apple",
 		"address_1": "123 Main St",
 		"address_2": "Unit 4",
@@ -22,7 +20,6 @@
 		"invoice_id": 2
 	},
 	{
-		"id": 3,
 		"company_name": "Apple",
 		"address_1": "123 Main St",
 		"address_2": "Unit 4",
@@ -33,7 +30,6 @@
 		"invoice_id": 3
 	},
 	{
-		"id": 4,
 		"company_name": "Apple",
 		"address_1": "123 Main St",
 		"address_2": "Unit 4",
@@ -42,5 +38,65 @@
 		"zip_code": 21208,
 		"pay_by": "2021-06-13",
 		"invoice_id": 4
+	},
+	{
+		"company_name": "Apple",
+		"address_1": "123 Main St",
+		"address_2": "Unit 4",
+		"city": "Baltimore",
+		"state": "MD",
+		"zip_code": 21208,
+		"pay_by": "2021-06-13",
+		"invoice_id": 5
+	},
+	{
+		"company_name": "Apple",
+		"address_1": "123 Main St",
+		"address_2": "Unit 4",
+		"city": "Baltimore",
+		"state": "MD",
+		"zip_code": 21208,
+		"pay_by": "2021-06-13",
+		"invoice_id": 6
+	},
+	{
+		"company_name": "Apple",
+		"address_1": "123 Main St",
+		"address_2": "Unit 4",
+		"city": "Baltimore",
+		"state": "MD",
+		"zip_code": 21208,
+		"pay_by": "2021-06-13",
+		"invoice_id": 7
+	},
+	{
+		"company_name": "Apple",
+		"address_1": "123 Main St",
+		"address_2": "Unit 4",
+		"city": "Baltimore",
+		"state": "MD",
+		"zip_code": 21208,
+		"pay_by": "2021-06-13",
+		"invoice_id": 8
+	},
+	{
+		"company_name": "Apple",
+		"address_1": "123 Main St",
+		"address_2": "Unit 4",
+		"city": "Baltimore",
+		"state": "MD",
+		"zip_code": 21208,
+		"pay_by": "2021-06-13",
+		"invoice_id": 1
+	},
+	{
+		"company_name": "Apple",
+		"address_1": "123 Main St",
+		"address_2": "Unit 4",
+		"city": "Baltimore",
+		"state": "MD",
+		"zip_code": 21208,
+		"pay_by": "2021-06-13",
+		"invoice_id": 9
 	}
 ]
