@@ -181,6 +181,7 @@ router.get('/add-project/:id', (req, res) => {
             res.status(500).json(err);
         });
 });
+// Front End route for add invoice
 router.get('/add-invoice/:id', (req, res) => {
     Invoice.findOne({
         where: {
@@ -346,15 +347,27 @@ router.get("/invoice/:id", (req, res) => {
             "name",
             "invoice_amount"
         ],
-        include: [
-            {
-                model: BillingAddress,
-            }
-        ],
+
         include: [
             {
                 model: Item,
-            }
+            },
+            {
+                model: BillingAddress,
+                attributes: [
+                    "id",
+                    "company_name",
+                    "address_1",
+                    "address_2",
+                    "city",
+                    "state",
+                    "zip_code",
+                    "pay_by",
+                    "invoice_id"
+                ],
+            },
+
+
         ],
 
     })
@@ -377,9 +390,6 @@ router.get("/invoice/:id", (req, res) => {
             res.status(500).json(err);
         });
 });
-
-
-
 // Edit Company FRONT END Route
 router.get("/edit/:id", withAuth, (req, res) => {
 
@@ -438,6 +448,8 @@ router.get("/edit/:id", withAuth, (req, res) => {
             res.status(500).json(err);
         });
 });
+//  Edit User
+
 
 
 

@@ -13,12 +13,11 @@ async function deleteProjectHandler(event) {
         }),
         headers: {
             'Content-Type': 'application/json'
-
         }
     });
 
     if (response.ok) {
-        document.location.replace(`/dashboard/company/${id}`);
+        document.location.replace(`/dashboard`);
 
     } else {
         alert(response.statusText);

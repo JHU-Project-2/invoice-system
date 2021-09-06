@@ -1,19 +1,19 @@
 [
 	{
 		"id": 1,
-		"name": "Andrew Keiser",
+		"username": "Andrew Keiser",
 		"email": "andrewkeiser@gmail.com",
 		"password": "password"
 	},
 	{
 		"id": 2,
-		"name": "Mike Sowers",
+		"username": "Mike Sowers",
 		"email": "msowers72@yahoo.com",
 		"password": "password"
 	},
 	{
 		"id": 3,
-		"name": "Troy Bohrer",
+		"username": "Troy Bohrer",
 		"email": "tbohrer@gmail.com",
 		"password": "password"
 	}

@@ -4,13 +4,7 @@ const router = require("express").Router();
 const withAuth = require('../utils/auth');
 const nodemailer = require('nodemailer');
 require('dotenv').config();
-
-
-
 const fs = require('fs')
-
-
-
 
 router.get('/', async (req, res) => {
   try {
@@ -35,7 +29,6 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
-
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
@@ -66,20 +59,12 @@ router.get('/signup', (req, res) => {
   });
 });
 router.get('/logout', (req, res) => {
-
-
   res.render('logout', {
     title: "Logout",
   });
 });
-
-
-// ! FRONT END ROUTES
-
-
 // Node Mailer
 router.post('/send', (req, res) => {
-
 
   // EMAIL TEMPLATE
   const output = `
@@ -121,6 +106,26 @@ router.post('/send', (req, res) => {
 
 }
 )
+router.get('/profile', async (req, res) => {
+  try {
+    // Get all projects and JOIN with user data
+    const userData = await User.findAll({
+      where: {
+        id: req.session.user_id,
+      }
+    });
+
+    const user = userData.map((user) => user.get({ plain: true }));
+    console.log(user)
+    res.render('edit-profile', {
+      user,
+      logged_in: req.session.logged_in,
+      title: "Edit Profile"
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 
 

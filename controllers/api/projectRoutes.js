@@ -1,8 +1,6 @@
 const router = require('express').Router();
 const { Project, Invoice, Item } = require('../../models');
 
-
-
 // GET all projects
 //! Not working
 router.get('/', async (req, res) => {
@@ -18,7 +16,6 @@ router.get('/', async (req, res) => {
 });
 
 // GET a single project
-//! Not working
 router.get('/:id', async (req, res) => {
     try {
         const projectData = await Project.findByPk(req.params.id, {
@@ -55,7 +52,6 @@ router.post('/', (req, res) => {
         });
 });
 
-// ! WORKING
 // DELETE a Project
 router.delete('/:id', async (req, res) => {
     try {

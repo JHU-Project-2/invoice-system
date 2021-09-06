@@ -1,12 +1,11 @@
 {{!-- CRUD MENU --}}
 <div class="card-header mb-2">
-    <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addItemModal">
-        Add Item
-    </button>
 
-    <button type="button" class="btn btn-sm btn-primary delete-invoice-btn">Delete Invoice</button>
+
+    <button type="button" class="btn btn-sm btn-primary delete-invoice-btn"><i class="fas fa-trash-alt mr-2"></i>Delete
+        Invoice</button>
     <button type="button" class="btn btn-sm btn-primary send-invoice" data-toggle="modal" data-target="#emailModal">
-        Send Invoice
+        <i class="fas fa-paper-plane mr-2"></i>Send Invoice
     </button>
 </div>
 
@@ -16,14 +15,6 @@
     {{!-- this is where the actual invoice template will go --}}
 
     <div class="card">
-        <div class="card-header d-flex justify-content-between">
-            <p>Invoice: {{invoice.name}}</p>
-            <p>Invoice Number: {{invoice.id}}</p>
-        </div>
-        <div class="card-body">
-            <h6>Pay By: {{ invoice.BillingAddress.pay_by}}</h6>
-            <h6>Amount Owed: ${{format_amount invoice.invoice_amount}}</h6>
-        </div>
         <div class="card-header">
             <h3>Bill To:</h3>
         </div>
@@ -33,12 +24,24 @@
             {{invoice.BillingAddress.address_1}}, {{invoice.BillingAddress.address_2}}</p>
             <p>{{invoice.BillingAddress.city}}, {{invoice.BillingAddress.state}} {{invoice.BillingAddress.zip_code}}</p>
 
-
-
-
         </div>
+        <div class="card-header d-flex justify-content-between">
+            <p>{{invoice.name}}</p>
+            <p>Invoice: {{invoice.id}}</p>
+        </div>
+        <div class="card-body">
+            <h6>Pay By: {{ invoice.BillingAddress.pay_by}}</h6>
+            <h6>Amount Owed: ${{format_amount invoice.invoice_amount}}</h6>
+        </div>
+
     </div>
 
+
+    <div class="card-header">
+        <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addItemModal">
+            <i class="fas fa-plus mr-2"></i>Add Item
+        </button>
+    </div>
 
     <table class="table">
         <thead>

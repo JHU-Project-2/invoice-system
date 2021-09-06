@@ -25,7 +25,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-// GET a single invoice - working
+// GET one invoice - working
 router.get('/:id', async (req, res) => {
     try {
         const invoiceData = await Invoice.findByPk(req.params.id, {

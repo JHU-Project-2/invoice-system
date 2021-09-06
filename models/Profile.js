@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Company extends Model { }
+class Profile extends Model { }
 
-Company.init(
+Profile.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -11,24 +11,31 @@ Company.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        name: {
+        first_name: {
             type: DataTypes.STRING,
-            allowNull: false,
+
         },
-        // logo_path: {
-        //     type: DataTypes.STRING
-        // },
+        last_name: {
+            type: DataTypes.STRING,
+
+        },
+
         user_id: {
-            type: DataTypes.INTEGER
-        }
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'user',
+                key: 'id',
+            },
+        },
+
     },
     {
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'company',
+        modelName: 'profile',
     }
 );
 
-module.exports = Company;
+module.exports = Profile;
