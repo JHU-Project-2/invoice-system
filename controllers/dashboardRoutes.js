@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const sequelize = require("../config/connection");
-const { Company, Project, User, Address, Contact, Invoice, Item } = require("../models");
-const BillingAddress = require("../models/BillingAddress");
+const { Company, Project, User, Address, Contact, Invoice, Item, BillingAddress } = require("../models");
 const withAuth = require("../utils/auth");
 
 // route for /dashboard
@@ -11,6 +10,10 @@ router.get('/', withAuth, async (req, res) => {
     try {
         // Get all projects and JOIN with user data
         const companyData = await Company.findAll({
+            // gets all companies owned by the logged in user
+            where: {
+                user_id: req.session.user_id,
+            },
             include: [
                 {
                     model: Address,
@@ -32,7 +35,8 @@ router.get('/', withAuth, async (req, res) => {
                         "phone"
                     ],
 
-                }
+                },
+
             ],
             order: [
                 ['name', 'asc']
@@ -152,9 +156,12 @@ router.get('/add-project/:id', (req, res) => {
                             'unit_price',
                         ]
                     },
+                    include: {
+                        model: BillingAddress,
+                    }
                 },
             }
-        ],
+        ]
     })
         .then((companyData) => {
             if (!companyData) {
@@ -183,11 +190,6 @@ router.get('/add-invoice/:id', (req, res) => {
             "id",
             "name"
         ],
-
-
-
-
-
         include: {
             model: Item,
             attributes: [
