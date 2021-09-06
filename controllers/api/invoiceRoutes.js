@@ -53,17 +53,26 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-//  Add Company route
+//  Add Invoice route
 router.post("/", withAuth, async (req, res) => {
     console.log("req.session", req.session)
     console.log("req.params", req.params)
+    const billingAddress = await BillingAddress.create({
 
+        address_1: req.body.address_1,
+        address_2: req.body.address_2,
+        city: req.body.city,
+        state: req.body.state,
+        zip_code: req.body.zipCode,
+        company_id: req.body.company_id,
+        company_name: req.body.companyName,
+        invoice_id: req.body.invoice_id
+    })
     const invoice = await Invoice.create({
-        name: req.body.companyName,
-        user_id: req.session.user_id,
-
+        name: req.body.invoiceName,
+        project_id: req.session.project_id,
+        due_date: req.body.due_date,
         include: [
-
             {
                 model: BillingAddress,
                 attributes: [
@@ -77,31 +86,16 @@ router.post("/", withAuth, async (req, res) => {
                     'pay_by',
                     'invoice_id',
                 ],
-
             },
         ]
     });
 
 
-    const billingAddress = await BillingAddress.create({
-        address_1: req.body.address_1,
-        address_2: req.body.address_2,
-        city: req.body.city,
-        state: req.body.state,
-        zip_code: req.body.zipCode,
-        company_id: req.body.company_id,
-        company_name: req.body.companyName,
-        pay_by: req.body.payBy,
 
-        invoice_id: req.params.invoice_id,
-
-
-
-    })
 
     console.log(invoice)
-    await invoice.save()
     await billingAddress.save()
+    await invoice.save()
 
     res.status(200).json(invoice);
 

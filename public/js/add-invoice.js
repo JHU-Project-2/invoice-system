@@ -9,11 +9,16 @@ async function addInvoiceFormHandler(event) {
   const state = document.querySelector('input[name="state"]').value.trim();
   const zipCode = document.querySelector('input[name="zip-code"]').value.trim();
   const companyName = document.querySelector('input[name="company-name"]').value.trim();
+  const invoiceName = document.querySelector('input[name="invoice-name"]').value.trim();
 
 
   const project_id = window.location.toString().split("/")[
     window.location.toString().split("/").length - 1
   ];
+  const invoice_id = window.location.toString().split("/")[
+    window.location.toString().split("/").length + 1
+  ];
+
   // check if checkbox is checked and return true or false
   // 
   //   if (document.getElementById("isPaid").checked = true) {
@@ -31,7 +36,7 @@ async function addInvoiceFormHandler(event) {
     body: JSON.stringify({
       // isPaid,
       due_date,
-      name,
+
       project_id,
       companyName,
       address_1,
@@ -39,6 +44,9 @@ async function addInvoiceFormHandler(event) {
       city,
       state,
       zipCode,
+      invoice_id,
+
+      invoiceName
 
 
 

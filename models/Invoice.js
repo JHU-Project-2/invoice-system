@@ -28,6 +28,7 @@ Invoice.init(
             type: DataTypes.INTEGER,
         },
 
+
         project_id: {
             type: DataTypes.INTEGER,
             references: {
