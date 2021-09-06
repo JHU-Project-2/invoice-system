@@ -36,15 +36,7 @@ router.delete('/:id', async (req, res) => {
         res.status(500).json(err);
     }
 });
-router.get('/', async (req, res) => {
-    try {
-        const itemData = await Item.findAll({});
-        console.log(itemData)
-        res.status(200).json(itemData);
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
+
 
 
 module.exports = router;

@@ -1,21 +1,19 @@
 const form = document.querySelector("#send-email-form");
+let invoiceData = []
+
 
 async function sendEmail(event) {
   event.preventDefault();
+
+
+  // get html data from invoice
+  let htmlData = document.querySelector('.email-content')
+  invoiceData.push(htmlData.innerHTML)
 
   var to = document.getElementById("to");
   var from = document.getElementById("from");
   var subject = document.getElementById("subject");
   var message = document.getElementById("message");
-
-  // const data = {
-  //     to: to.value,
-  //     from: from.value,
-  //     subject: subject.value,
-  //     text: message.value
-  // }
-
-  // console.log(data)
 
   if (to && from && subject) {
     const response = await fetch("/send", {
@@ -25,6 +23,9 @@ async function sendEmail(event) {
         from: from.value,
         subject: subject.value,
         text: message.value,
+        html: invoiceData
+
+
       }),
       headers: {
         "Content-Type": "application/json",
@@ -40,6 +41,9 @@ async function sendEmail(event) {
   }
 }
 
+
 document
   .querySelector("#send-email-form")
   .addEventListener("submit", sendEmail);
+
+

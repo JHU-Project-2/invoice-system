@@ -7,71 +7,75 @@
         <button class="btn btn-sm btn-primary">Delete Invoice</button>
     </a>
 
-    <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#emailModal">
+    <button type="button" class="btn btn-sm btn-primary get-invoice">Get Invoice</button>
+
+    <button type="button" class="btn btn-sm btn-primary send-invoice" data-toggle="modal" data-target="#emailModal">
         Send Invoice
     </button>
 </div>
 
-<h1>Invoice Details</h1>
-{{!-- this is where the actual invoice template will go --}}
+<div class="email-content">
 
-<div class="card">
-    <div class="card-header d-flex justify-content-between">
-        <p>Invoice: {{invoice.name}}</p>
-        <p>Invoice Number: {{invoice.id}}</p>
+    <h1>Invoice Details</h1>
+    {{!-- this is where the actual invoice template will go --}}
+
+    <div class="card">
+        <div class="card-header d-flex justify-content-between">
+            <p>Invoice: {{invoice.name}}</p>
+            <p>Invoice Number: {{invoice.id}}</p>
+        </div>
+        <div class="card-body">
+            <h6>Pay By: {{ invoice.BillingAddress.pay_by}}</h6>
+            <h6>Amount Owed: ${{format_amount invoice.invoice_amount}}</h6>
+        </div>
+        <div class="card-header">
+            <h3>Bill To:</h3>
+        </div>
+        <div class="card-body">
+            <h4>Company Name: {{invoice.BillingAddress.company_name}} </h4>
+            <h6>Address:</h6>
+            {{invoice.BillingAddress.address_1}}, {{invoice.BillingAddress.address_2}}</p>
+            <p>{{invoice.BillingAddress.city}}, {{invoice.BillingAddress.state}} {{invoice.BillingAddress.zip_code}}</p>
+
+
+
+
+        </div>
     </div>
-    <div class="card-body">
-        <h6>Pay By: {{format_date invoice.BillingAddress.pay_by}}</h6>
-        <h6>Amount Owed: ${{format_amount invoice.invoice_amount}}</h6>
-    </div>
-    <div class="card-header">
-        <h3>Bill To:</h3>
-    </div>
-    <div class="card-body">
-        <h4>Company Name: {{invoice.BillingAddress.company_name}} </h4>
-        <h6>Address:</h6>
-        {{invoice.BillingAddress.address_1}}, {{invoice.BillingAddress.address_2}}</p>
-        <p>{{invoice.BillingAddress.city}}, {{invoice.BillingAddress.state}} {{invoice.BillingAddress.zip_code}}</p>
 
 
-
-
-    </div>
-</div>
-
-
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Description</th>
-            <th scope="col">Units</th>
-            <th scope="col">Unit Price</th>
-            <th scope="col">Line Total</th>
-            <th scope="col">Delete</th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#each invoice.items}}
+    <table class="table">
+        <thead>
             <tr>
-                <td class="description">{{description}}</td>
-                <td class="units">{{units}}</td>
-                <td class="ppu">{{unit_price}}</td>
-                <td class="total"></td>
-                <td>
-                    <button class="btn btn-sm btn-primary delete-item-btn" data-item-id="{{id}}">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                </td>
+                <th scope="col">Description</th>
+                <th scope="col">Units</th>
+                <th scope="col">Unit Price</th>
+                <th scope="col">Line Total</th>
+                <th scope="col">Delete</th>
             </tr>
-        {{/each}}
-        <tr>
-            <th>TOTAL</th>
-            <td>$</th>
-        </tr>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            {{#each invoice.items}}
+                <tr>
+                    <td class="description">{{description}}</td>
+                    <td class="units">{{units}}</td>
+                    <td class="ppu">{{unit_price}}</td>
+                    <td class="total"></td>
+                    <td>
+                        <button class="btn btn-sm btn-primary delete-item-btn" data-item-id="{{id}}">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            {{/each}}
+            <tr>
+                <th>TOTAL</th>
+                <td>$</th>
+            </tr>
+        </tbody>
+    </table>
 
-
+</div>
 {{>send-email}}
 
 {{>add-item}}

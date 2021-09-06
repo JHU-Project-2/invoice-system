@@ -3,6 +3,13 @@ const { User, Company, Contact, Address, Project, Invoice, Item } = require("../
 const router = require("express").Router();
 const withAuth = require('../utils/auth');
 const nodemailer = require('nodemailer');
+
+
+
+const fs = require('fs')
+
+
+
 require('dotenv').config();
 
 router.get('/', async (req, res) => {
@@ -53,16 +60,24 @@ router.get('/logout', (req, res) => {
 
 
 
-
 router.post('/send', (req, res) => {
   console.log(req.body)
 
+  // EMAIL TEMPLATE
   const output = `
-  <p>This is the invoice template literal</p>
-      
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+                       integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+                       crossorigin="anonymous">
+                 ${req.body.html}
+  
+                
+              
+     
+
+ 
   `;
+
   // create reusable transporter object using the default SMTP transport
-  // GMAIL
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
@@ -73,33 +88,14 @@ router.post('/send', (req, res) => {
       rejectUnauthorized: false
     }
   });
-  //  SMTP
-  // const transporter = nodemailer.createTransport({
-  //   host: "smtp.office365.com",
-  //   port: 587,
-  //   auth: {
-  //     user: process.env.nodemailer_USER,
-  //     pass: process.env.nodemailer_PASSWORD
-  //   },
-  //   tls: {
-  //     rejectUnauthorized: false
-  //   }
-  // });
-
-  // const mailOptions = {
-  //   from: "andrewkeiser@gmail.com",
-  //   to: "webdev410@gmail.com",
-  //   subject: "subject test",
-  //   text: "message body here",
-  //   html: output
-  // };
 
   const mailOptions = {
     from: req.body.from,
     to: req.body.to,
     subject: `New Invoice from ${req.body.from}: ${req.body.subject}`,
     text: req.body.text,
-    html: output
+    html: output,
+
 
   };
 

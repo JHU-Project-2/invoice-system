@@ -380,20 +380,12 @@ router.get("/invoice/:id", (req, res) => {
         ],
         include: [
             {
-                model: Item,
-                attributes:
-                    [
-                        "id",
-                        "description",
-                        "units",
-                        "unit_price",
-                    ]
+                model: BillingAddress,
             }
         ],
         include: [
             {
-                model: BillingAddress,
-
+                model: Item,
             }
         ],
 
@@ -417,6 +409,7 @@ router.get("/invoice/:id", (req, res) => {
             res.status(500).json(err);
         });
 });
+
 
 
 // Edit Company FRONT END Route

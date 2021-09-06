@@ -3,7 +3,6 @@ const { Invoice, Item } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // GET all invoices - working
-
 router.get('/', async (req, res) => {
     try {
         const invoiceData = await Invoice.findAll({
