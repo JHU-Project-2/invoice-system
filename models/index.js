@@ -23,10 +23,7 @@ Company.hasOne(Address, {
     foreignKey: "company_id",
     onDelete: "cascade",
 })
-Invoice.hasOne(BillingAddress, {
-    foreignKey: "invoice_id",
-    onDelete: "cascade",
-})
+
 Company.hasMany(Project, {
     foreignKey: "company_id",
     onDelete: "cascade",
@@ -39,14 +36,23 @@ Invoice.belongsTo(Project, {
     foreignKey: "project_id",
     onDelete: "cascade",
 })
-Address.belongsTo(Company, {
-    foreignKey: "company_id",
-    onDelete: "cascade",
-})
+
 Invoice.hasMany(Item, {
     foreignKey: "invoice_id",
     onDelete: "cascade",
 })
+Invoice.hasOne(BillingAddress, {
+    foreignKey: "invoice_id",
+    onDelete: "cascade",
+})
+BillingAddress.belongsTo(Invoice, {
+    foreignKey: "invoice_id",
+    onDelete: "cascade"
+})
+Address.belongsTo(Company, {
+    foreignKey: "company_id",
+    onDelete: "cascade",
+})
 
 
-module.exports = { User, Company, Contact, Address, Project, Invoice, Item };
+module.exports = { User, Company, Contact, Address, Project, Invoice, Item, BillingAddress };

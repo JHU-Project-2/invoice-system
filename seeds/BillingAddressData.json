@@ -1,6 +1,7 @@
 [
 	{
 		"id": 1,
+		"company_name": "Apple",
 		"address_1": "123 Main St",
 		"address_2": "Unit 4",
 		"city": "Baltimore",
@@ -11,6 +12,7 @@
 	},
 	{
 		"id": 2,
+		"company_name": "Apple",
 		"address_1": "123 Main St",
 		"address_2": "Unit 4",
 		"city": "Baltimore",
@@ -21,6 +23,7 @@
 	},
 	{
 		"id": 3,
+		"company_name": "Apple",
 		"address_1": "123 Main St",
 		"address_2": "Unit 4",
 		"city": "Baltimore",
@@ -31,6 +34,7 @@
 	},
 	{
 		"id": 4,
+		"company_name": "Apple",
 		"address_1": "123 Main St",
 		"address_2": "Unit 4",
 		"city": "Baltimore",
