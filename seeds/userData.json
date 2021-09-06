@@ -1,17 +1,20 @@
 [
 	{
-		"name": "Andrew",
+		"id": 1,
+		"name": "Andrew Keiser",
 		"email": "andrewkeiser@gmail.com",
 		"password": "password"
 	},
 	{
-		"name": "Lernantino",
-		"email": "lernantino@gmail.com",
-		"password": "password12345"
+		"id": 2,
+		"name": "Mike Sowers",
+		"email": "msowers72@yahoo.com",
+		"password": "password"
 	},
 	{
-		"name": "Amiko",
-		"email": "amiko2k20@aol.com",
-		"password": "password12345"
+		"id": 3,
+		"name": "Troy Bohrer",
+		"email": "tbohrer@gmail.com",
+		"password": "password"
 	}
 ]

@@ -153,9 +153,11 @@ router.get('/:id', (req, res) => {
 
 //  Add Company route
 router.post("/", withAuth, async (req, res) => {
+  console.log("req.session", req.session.user_id)
+
   const company = await Company.create({
-    // user_id: req.session.user_id,
     name: req.body.companyName,
+    user_id: req.session.user_id,
 
     include: [
       {
@@ -167,6 +169,7 @@ router.post("/", withAuth, async (req, res) => {
           'phone',
           'company_id'
         ],
+
       },
       {
         model: Address,
@@ -182,21 +185,27 @@ router.post("/", withAuth, async (req, res) => {
       },
     ]
   });
-  //   company.contact.name = req.body.contactName;
-  //   company.contact.email = req.body.contactEmail;
-  //   company.contact.phone = req.body.contactPhone;
-  // 
-  // 
-  //   company.address.address_1 = req.body.address1;
-  //   company.address.address_2 = req.body.address2;
-  //   company.address.city = req.body.city;
-  //   company.address.state = req.body.state;
-  //   company.address.zip_code = req.body.zipCode;
+
+  const contact = await Contact.create({
+    name: req.body.contactName,
+    email: req.body.contactEmail,
+    phone: req.body.contactPhone,
+    company_id: company.id
+  })
+  const address = await Address.create({
+    address_1: req.body.address1,
+    address_2: req.body.address2,
+    city: req.body.city,
+    state: req.body.state,
+    zip_code: req.body.zipCode,
+    company_id: company.id
+
+  })
 
   console.log(company)
   await company.save()
-  // await company.contact.save()
-  // await company.address.save()
+  await contact.save()
+  await address.save()
 
   res.status(200).json(company);
 
