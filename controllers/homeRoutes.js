@@ -28,7 +28,7 @@ router.get('/', async (req, res) => {
     console.log(companies)
     res.render('homepage', {
       companies,
-      logged_in: req.session.logged_in,
+      logged_in: true,
       title: "Home"
     });
   } catch (err) {
@@ -45,6 +45,24 @@ router.get('/login', (req, res) => {
 
   res.render('login', {
     title: "Login"
+  });
+});
+router.get('/logout', (req, res) => {
+
+
+  res.render('logout', {
+    title: "Logout",
+  });
+});
+router.get('/signup', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.logged_in = true) {
+    res.redirect('/dashboard');
+    return;
+  }
+
+  res.render('signup', {
+    title: "Sign Up"
   });
 });
 router.get('/logout', (req, res) => {

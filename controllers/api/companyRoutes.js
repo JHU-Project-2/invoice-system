@@ -153,9 +153,11 @@ router.get('/:id', (req, res) => {
 
 //  Add Company route
 router.post("/", withAuth, async (req, res) => {
+  console.log("req.session", req.session)
+
   const company = await Company.create({
-    // user_id: req.session.user_id,
     name: req.body.companyName,
+    user_id: req.session.user_id,
 
     include: [
       {
