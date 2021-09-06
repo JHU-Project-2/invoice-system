@@ -1,10 +1,9 @@
-{{!-- CRUD MENU --}}
+{{! CRUD MENU }}
 <div class="card-header mb-2">
 
   <a class="btn btn-sm btn-primary edit-company-btn" href="/dashboard/edit/{{company.id}}">
     Edit Company
   </a>
-
 
   <button class="btn btn-sm btn-primary delete-company-btn" data-company-id="{{company.id}}">Delete Company</button>
 
@@ -13,27 +12,32 @@
   </a>
 </div>
 
-
-
-
-{{!-- Company/Contact Card --}}
+{{! Company/Contact Card }}
 <div class="card col-12 col-md-6 mb-2">
   <div class="card-header">
     <h2>{{company.name}}</h2>
   </div>
   <div class="card-body">
     <h5 class="card-text">{{company.contact.name}}</h5>
-    <p class="card-text"><i class="fas fa-envelope"></i> {{company.contact.email}}</p>
-    <p class="card-text"><i class="fas fa-phone"></i> {{format_phone company.contact.phone}}</p>
-    <p class="card-text"><i class="fas fa-address-card"></i> {{company.address.address_1}},
-      {{company.address.address_2}}, {{company.address.city}}, {{company.address.state}} {{company.address.zip_code}}
+    <p class="card-text"><i class="fas fa-envelope"></i>
+      {{company.contact.email}}
+    </p>
+    <p class="card-text"><i class="fas fa-phone"></i>
+      {{format_phone company.contact.phone}}
+    </p>
+    <p class="card-text"><i class="fas fa-address-card"></i>
+      {{company.address.address_1}},
+      {{company.address.address_2}},
+      {{company.address.city}},
+      {{company.address.state}}
+      {{company.address.zip_code}}
     </p>
   </div>
- 
+
 </div>
 
-{{!-- All Projects for Company --}}
-<div class="card ">
+{{! All Projects for Company }}
+<div class="card">
   <div class="card-header">
     <h2>Projects</h2>
   </div>

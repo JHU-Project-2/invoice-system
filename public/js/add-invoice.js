@@ -36,7 +36,8 @@ async function addInvoiceFormHandler(event) {
 
 
   if (response.ok) {
-    document.location.replace("/dashboard");
+    document.location.replace(`/dashboard/project/${project_id}`);
+
   } else {
     alert(response.statusText);
   }

@@ -29,7 +29,7 @@ router.delete('/:id', withAuth, async (req, res) => {
     });
 
     if (!contactData) {
-      res.status(404).json({ message: 'No Client found with this id!' });
+      res.status(404).json({ message: 'No contact found with this id!' });
       return;
     }
 

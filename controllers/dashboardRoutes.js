@@ -158,7 +158,7 @@ router.get('/add-project/:id', (req, res) => {
     })
         .then((companyData) => {
             if (!companyData) {
-                res.status(404).json({ message: "No company found with this id" });
+                res.status(404).json({ message: "No company found with this id 🤬" });
                 return;
             }
             const company = companyData.get({ plain: true });
@@ -175,7 +175,7 @@ router.get('/add-project/:id', (req, res) => {
         });
 });
 router.get('/add-invoice/:id', (req, res) => {
-    Company.findOne({
+    Invoice.findOne({
         where: {
             id: req.params.id,
         },
@@ -183,60 +183,26 @@ router.get('/add-invoice/:id', (req, res) => {
             "id",
             "name"
         ],
-        include: [
-            {
-                model: Address,
-                attributes: [
-                    "id",
-                    "address_1",
-                    "address_2",
-                    "city",
-                    "state",
-                    "zip_code"
-                ],
-            },
-            {
-                model: Contact,
-                attributes: [
-                    "id",
-                    "name",
-                    "email",
-                    "phone"
-                ],
-            },
-            {
-                model: Project,
-                attributes: [
-                    "id",
-                    "title",
-                    "type",
-                    "price",
-                    "due_date",
 
-                ],
-                include: {
-                    model: Invoice,
-                    attributes: [
-                        "id",
-                        "name",
-                        "invoice_amount"
-                    ],
-                    include: {
-                        model: Item,
-                        attributes: [
-                            'id',
-                            'description',
-                            'units',
-                            'unit_price',
-                        ]
-                    },
-                },
-            }
-        ],
-    })
+
+
+
+
+        include: {
+            model: Item,
+            attributes: [
+                'id',
+                'description',
+                'units',
+                'unit_price',
+            ]
+        },
+    },
+
+    )
         .then((companyData) => {
             if (!companyData) {
-                res.status(404).json({ message: "No company found with this id" });
+                res.status(404).json({ message: "No company found with this id 🤬" });
                 return;
             }
             const company = companyData.get({ plain: true });

@@ -3,6 +3,7 @@ const { User, Company, Contact, Address, Project, Invoice, Item } = require("../
 const router = require("express").Router();
 const withAuth = require('../utils/auth');
 const nodemailer = require('nodemailer');
+require('dotenv').config();
 
 
 
@@ -10,7 +11,6 @@ const fs = require('fs')
 
 
 
-require('dotenv').config();
 
 router.get('/', async (req, res) => {
   try {
@@ -77,22 +77,13 @@ router.get('/logout', (req, res) => {
 // ! FRONT END ROUTES
 
 
-
+// Node Mailer
 router.post('/send', (req, res) => {
-  console.log(req.body)
+
 
   // EMAIL TEMPLATE
   const output = `
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-                       integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
-                       crossorigin="anonymous">
                  ${req.body.html}
-  
-                
-              
-     
-
- 
   `;
 
   // create reusable transporter object using the default SMTP transport
@@ -110,14 +101,14 @@ router.post('/send', (req, res) => {
   const mailOptions = {
     from: req.body.from,
     to: req.body.to,
-    subject: `New Invoice from ${req.body.from}: ${req.body.subject}`,
+    subject: req.body.subject,
     text: req.body.text,
     html: output,
 
 
   };
 
-  // console.log(req.body)
+  console.log(req.body)
 
   transporter.sendMail(mailOptions, function (err, info) {
     if (err) {

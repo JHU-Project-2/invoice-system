@@ -34,7 +34,7 @@ async function sendEmail(event) {
 
     if (response.ok) {
       alert("'Email sent successfully!");
-      document.location.reload(`/dashboard/invoice/${id}`);
+      // document.location.reload(`/dashboard/invoice/${id}`);
     } else {
       alert("Error!" + response.statusText + ": Something went wrong 😬");
     }
@@ -45,5 +45,7 @@ async function sendEmail(event) {
 document
   .querySelector("#send-email-form")
   .addEventListener("submit", sendEmail);
+
+
 
 
