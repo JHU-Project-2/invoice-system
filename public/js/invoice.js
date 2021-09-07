@@ -7,6 +7,8 @@ let lineTotal;
 let totalArray = [];
 
 let deleteBtn = document.querySelector('.delete-item-btn')
+
+
 function getTotal() {
     // get each line total 
     for (var i = 0; i < row.length; i++) {
@@ -23,10 +25,8 @@ function getTotal() {
 }
 
 // works but can only delete the first item
-async function deleteItem(event) {
-    event.preventDefault();
+async function deleteItem(itemId) {
 
-    let itemId = event.target.getAttribute("data-item-id")
     console.log("item id: ", itemId)
 
     const response = await fetch(`/api/item/${itemId}`, {
@@ -50,4 +50,13 @@ async function deleteItem(event) {
 }
 
 getTotal()
-deleteBtn.addEventListener('click', deleteItem)
+// deleteBtn.addEventListener('click', deleteItem)
+document.querySelector("#invoice-table").addEventListener('click', event => {
+    if (event.target.classList.contains('delete-item-btn')) {
+        event.preventDefault();
+        let itemId = event.target.getAttribute("data-item-id")
+        deleteItem(itemId)
+    }
+
+})
+
