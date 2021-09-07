@@ -1,12 +1,22 @@
 let ppu = document.querySelector('.ppu').innerHTML
 let units = document.querySelector('.units').innerHTML
-let totalEl = document.querySelector('.total')
+let row = document.querySelectorAll('.line-item')
+let totalEl = document.querySelectorAll('.total')
+
+// console.log(totalEl)
+
 
 
 function init() {
-    let lineTotal = ppu * units
-    console.log(lineTotal)
-    totalEl.append(lineTotal)
+    // each line total 
+    for (var i = 0; i < row.length; i++) {
+        let lineTotal = ppu * units
+        totalEl[i].append(lineTotal)
+        // totalEl.append(lineTotal)
+        // console.log(lineTotal)
+    }
+
+
 }
 
 
