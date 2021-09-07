@@ -2,13 +2,19 @@ const form = document.querySelector("#send-email-form");
 let invoiceData = []
 
 
+function formatEmail() {
+  // get html data from invoice
+  let htmlData = document.querySelector('.email-content').innerHTML
+
+
+
+  invoiceData.push(htmlData)
+
+}
+
 async function sendEmail(event) {
   event.preventDefault();
 
-
-  // get html data from invoice
-  let htmlData = document.querySelector('.email-content')
-  invoiceData.push(htmlData.innerHTML)
 
   var to = document.getElementById("to");
   var from = document.getElementById("from");
@@ -16,7 +22,7 @@ async function sendEmail(event) {
   var message = document.getElementById("message");
 
   if (to && from && subject) {
-    const response = await fetch("/send", {
+    const response = await fetch("/mail/send", {
       method: "POST",
       body: JSON.stringify({
         to: to.value,
@@ -40,6 +46,9 @@ async function sendEmail(event) {
     }
   }
 }
+
+formatEmail()
+
 
 
 document

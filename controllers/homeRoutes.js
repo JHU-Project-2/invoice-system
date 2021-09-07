@@ -2,13 +2,11 @@ const sequelize = require("../config/connection");
 const { User, Company, Contact, Address, Project, Invoice, Item } = require("../models");
 const router = require("express").Router();
 const withAuth = require('../utils/auth');
-const nodemailer = require('nodemailer');
-const { logger } = require("nodemailer/lib/shared");
-Handlebars = require('handlebars'),
 
 
-  require('dotenv').config();
-const fs = require('fs');
+
+require('dotenv').config();
+
 
 router.get('/', async (req, res) => {
   try {
@@ -61,47 +59,21 @@ router.get('/signup', (req, res) => {
   });
 });
 
-// Node Mailer - for sending emails
-router.post('/send', (req, res) => {
-
-  // EMAIL TEMPLATE
-  const output = `${req.body.html}`;
-
-  // create reusable transporter object using the default SMTP transport
-  const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: process.env.nodemailer_USER,
-      pass: process.env.nodemailer_PASSWORD
-    },
-    tls: {
-      rejectUnauthorized: false
-    }
-  });
-
-  const mailOptions = {
-    from: req.body.from,
-    to: req.body.to,
-    subject: req.body.subject,
-    text: req.body.text,
-    html: output,
 
 
-  };
 
-  console.log(req.body)
 
-  transporter.sendMail(mailOptions, function (err, info) {
-    if (err) {
-      console.log(err)
-    } else {
-      console.log("Email has been sent!")
-      res.send('Email has been sent!"')
-    }
-  })
 
-}
-)
+
+
+
+
+
+
+
+
+
+
 
 // ! NEED TO ADD TO MENU / MAKE WORK
 router.get('/profile', async (req, res) => {
