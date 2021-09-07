@@ -3,8 +3,12 @@ const { User, Company, Contact, Address, Project, Invoice, Item } = require("../
 const router = require("express").Router();
 const withAuth = require('../utils/auth');
 const nodemailer = require('nodemailer');
-require('dotenv').config();
-const fs = require('fs')
+const { logger } = require("nodemailer/lib/shared");
+Handlebars = require('handlebars'),
+
+
+  require('dotenv').config();
+const fs = require('fs');
 
 router.get('/', async (req, res) => {
   try {
@@ -41,8 +45,6 @@ router.get('/login', (req, res) => {
   });
 });
 router.get('/logout', (req, res) => {
-
-
   res.render('logout', {
     title: "Logout",
   });
@@ -58,18 +60,12 @@ router.get('/signup', (req, res) => {
     title: "Sign Up"
   });
 });
-router.get('/logout', (req, res) => {
-  res.render('logout', {
-    title: "Logout",
-  });
-});
-// Node Mailer
+
+// Node Mailer - for sending emails
 router.post('/send', (req, res) => {
 
   // EMAIL TEMPLATE
-  const output = `
-                 ${req.body.html}
-  `;
+  const output = `${req.body.html}`;
 
   // create reusable transporter object using the default SMTP transport
   const transporter = nodemailer.createTransport({
@@ -106,6 +102,8 @@ router.post('/send', (req, res) => {
 
 }
 )
+
+// ! NEED TO ADD TO MENU / MAKE WORK
 router.get('/profile', async (req, res) => {
   try {
     // Get all projects and JOIN with user data
