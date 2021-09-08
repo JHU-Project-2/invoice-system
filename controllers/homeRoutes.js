@@ -2,9 +2,6 @@ const sequelize = require("../config/connection");
 const { User, Company, Contact, Address, Project, Invoice, Item } = require("../models");
 const router = require("express").Router();
 const withAuth = require('../utils/auth');
-
-
-
 require('dotenv').config();
 
 
@@ -59,30 +56,14 @@ router.get('/signup', (req, res) => {
   });
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ! NEED TO ADD TO MENU / MAKE WORK
 router.get('/profile', async (req, res) => {
   try {
     // Get all projects and JOIN with user data
     const userData = await User.findAll({
       where: {
         id: req.session.user_id,
-      }
+      },
+
     });
 
     const user = userData.map((user) => user.get({ plain: true }));

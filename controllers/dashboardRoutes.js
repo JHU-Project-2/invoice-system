@@ -34,14 +34,11 @@ router.get('/', withAuth, async (req, res) => {
                         "email",
                         "phone"
                     ],
-
                 },
-
             ],
             order: [
                 ['name', 'asc']
             ],
-
         });
 
         // Serialize data so the template can read it
@@ -203,7 +200,6 @@ router.get('/add-invoice/:id', (req, res) => {
             ]
         },
     },
-
     )
         .then((companyData) => {
             if (!companyData) {
@@ -450,7 +446,7 @@ router.get("/edit/:id", withAuth, (req, res) => {
             res.status(500).json(err);
         });
 });
-//  Edit User
+
 
 
 
