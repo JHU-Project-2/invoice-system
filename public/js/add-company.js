@@ -1,6 +1,6 @@
 async function addCompanyForm(event) {
   event.preventDefault();
-
+// select all the form elements
   const companyName = document.getElementById("company-name").value;
 
   const contactName = document.querySelector('input[name="contact-name"]').value.trim();
@@ -14,6 +14,7 @@ async function addCompanyForm(event) {
   const zipCode = document.querySelector('input[name="contact-zip-code"]').value.trim();
 
   console.log(companyName)
+  // this is the api call to pass data to the back-end
   const response = await fetch(`/api/company`, {
     method: "POST",
     body: JSON.stringify({
@@ -34,6 +35,7 @@ async function addCompanyForm(event) {
 
 
   if (response.ok) {
+   // after form is submitted send the user to the dashboard
     document.location.replace("/dashboard");
   } else {
     alert(response.statusText);

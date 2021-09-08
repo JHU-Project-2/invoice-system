@@ -1,13 +1,14 @@
+// connects to sequelize and the models
 const sequelize = require("../config/connection");
 const { User, Company, Contact, Sent, Address, Project, Invoice, Item } = require("../models");
 const router = require("express").Router();
 const withAuth = require('../utils/auth');
 require('dotenv').config();
-
-
+// these are the front end routes for the user interface
+// main home route
 router.get('/', async (req, res) => {
   try {
-    // Get all projects and JOIN with user data
+    // Get all compainies and bring in the data so its avaiable to the home-page
     const companyData = await Company.findAll({
       // include: [
       //   {
@@ -17,10 +18,13 @@ router.get('/', async (req, res) => {
       // ],
     });
 
+    // taking all of the company data and sanitizing the data
     const companies = companyData.map((company) => company.get({ plain: true }));
     console.log(companies)
+    // render the homepage handlebars
     res.render('homepage', {
-      companies,
+      // pass in the sanitized data as compainies
+      companies,      
       logged_in: req.session.logged_in,
       title: "Home"
     });
@@ -28,6 +32,7 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
+// for the route /login (if they are logged-in send the user to the dashboard otherwise make them log-in)
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
@@ -39,11 +44,13 @@ router.get('/login', (req, res) => {
     title: "Login"
   });
 });
+// rendering our logout screen when the user loggs out
 router.get('/logout', (req, res) => {
   res.render('logout', {
     title: "Logout",
   });
 });
+// route for /signup (rendering the singup page) 
 router.get('/signup', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
@@ -55,10 +62,10 @@ router.get('/signup', (req, res) => {
     title: "Sign Up"
   });
 });
-
+// route for /profile
 router.get('/profile', async (req, res) => {
   try {
-    // Get all projects and JOIN with user data
+    // This line of code only pulls data for the user that is logged-in
     const userData = await User.findAll({
       where: {
         id: req.session.user_id,
@@ -77,7 +84,7 @@ router.get('/profile', async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+// route for sent invoices
 router.get('/sent-invoices', async (req, res) => {
   try {
     // Get all projects and JOIN with user data

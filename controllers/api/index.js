@@ -7,6 +7,7 @@ const itemRoutes = require('./itemRoutes');
 const projectRoutes = require('./projectRoutes');
 // const profileRoutes = require('./profileRoutes');
 
+// declaring api routes
 router.use('/users', userRoutes);
 router.use('/company', companyRoutes);
 router.use('/contacts', contactRoutes);

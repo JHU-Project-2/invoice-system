@@ -156,7 +156,9 @@ router.post("/", withAuth, async (req, res) => {
   console.log("req.session", req.session.user_id)
 
   const company = await Company.create({
+    // take the req.body info and assign it to the database
     name: req.body.companyName,
+    // companies user id = user that is signed in
     user_id: req.session.user_id,
 
     include: [
