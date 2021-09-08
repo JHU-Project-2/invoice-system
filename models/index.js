@@ -60,6 +60,7 @@ User.hasMany(Sent, {
     foreignKey: "user_id",
     onDelete: "cascade"
 })
+
 Invoice.hasMany(Sent, {
     foreignKey: "invoice_id",
     onDelete: "cascade"

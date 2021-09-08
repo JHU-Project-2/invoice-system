@@ -48,6 +48,8 @@ router.post('/send', (req, res) => {
     Sent.create({
         user_id: req.session.user_id,
         invoice_id: req.body.invoice_id,
+        sent_to_email: req.body.to,
+        sent_by: req.session.username
     })
         .then(sentData => res.json(sentData))
         .catch(err => {

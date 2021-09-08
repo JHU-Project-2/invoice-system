@@ -1,5 +1,5 @@
 const sequelize = require("../config/connection");
-const { User, Company, Contact, Address, Project, Invoice, Item } = require("../models");
+const { User, Company, Contact, Sent, Address, Project, Invoice, Item } = require("../models");
 const router = require("express").Router();
 const withAuth = require('../utils/auth');
 require('dotenv').config();
@@ -72,6 +72,26 @@ router.get('/profile', async (req, res) => {
       user,
       logged_in: req.session.logged_in,
       title: "Edit Profile"
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/sent-invoices', async (req, res) => {
+  try {
+    // Get all projects and JOIN with user data
+    const sentData = await Sent.findAll({
+    });
+
+
+    const sent = sentData.map((sent) => sent.get({ plain: true }));
+
+    console.log(sent)
+    res.render('sent-invoices', {
+      sent,
+      logged_in: req.session.logged_in,
+      title: "Sent Invoices"
     });
   } catch (err) {
     res.status(500).json(err);

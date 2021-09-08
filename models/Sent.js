@@ -11,6 +11,12 @@ Sent.init(
             primaryKey: true,
             autoIncrement: true,
         },
+        sent_to_email: {
+            type: DataTypes.STRING,
+        },
+        sent_by: {
+            type: DataTypes.STRING,
+        },
         invoice_id: {
             type: DataTypes.INTEGER,
             references: {

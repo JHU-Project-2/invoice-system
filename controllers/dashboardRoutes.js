@@ -243,7 +243,7 @@ router.get("/company/:id", (req, res) => {
     })
         .then((companyData) => {
             if (!companyData) {
-                res.status(404).json({ message: "No post found with this id" });
+                res.status(404).json({ message: "No company found with this id" });
                 return;
             }
             const company = companyData.get({ plain: true });
