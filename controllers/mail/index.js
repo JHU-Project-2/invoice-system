@@ -2,13 +2,13 @@ const router = require('express').Router();
 const nodemailer = require('nodemailer');
 const Handlebars = require('handlebars')
 const fs = require('fs')
-const path = require('path')
+const path = require('path');
+const { Sent } = require('../../models');
 
 // Node Mailer 
 router.post('/send', (req, res) => {
-    // // TEMPLATE
+    // for using a template
     // var source = fs.readFileSync(path.join(__dirname, 'invoice-email.handlebars'), 'utf8');
-    // // Email Generator
     // var template = Handlebars.compile(source);
 
     // EMAIL TEMPLATE
@@ -31,12 +31,11 @@ router.post('/send', (req, res) => {
         to: req.body.to,
         subject: req.body.subject,
         text: req.body.text,
-        // html: template(),
         html: output,
+        // html: template(),
     };
 
     console.log(req.body)
-
     transporter.sendMail(mailOptions, function (err, info) {
         if (err) {
             console.log(err)
@@ -45,6 +44,18 @@ router.post('/send', (req, res) => {
             res.send('Email has been sent!"')
         }
     })
+    // add the invoice to the sent model to keep track of sent invoices
+    Sent.create({
+        user_id: req.session.user_id,
+        invoice_id: req.body.invoice_id,
+    })
+        .then(sentData => res.json(sentData))
+        .catch(err => {
+            console.log(err);
+            res.status(400).json(err);
+        })
+
+
 })
 
 

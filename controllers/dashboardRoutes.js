@@ -178,46 +178,15 @@ router.get('/add-project/:id', (req, res) => {
             res.status(500).json(err);
         });
 });
+
 // Front End route for add invoice
 router.get('/add-invoice/:id', (req, res) => {
-    Invoice.findOne({
-        where: {
-            id: req.params.id,
-        },
-        attributes: [
-            "id",
-            "name",
-            "due_date",
-            "is_paid"
-        ],
-        include: {
-            model: Item,
-            attributes: [
-                'id',
-                'description',
-                'units',
-                'unit_price',
-            ]
-        },
-    },
-    )
-        .then((companyData) => {
-            if (!companyData) {
-                res.status(404).json({ message: "No invoice found with this id 🤬" });
-                return;
-            }
-            const company = companyData.get({ plain: true });
-            console.log(company);
-            res.render("add-invoice", {
-                company,
-                logged_in: true,
-                title: "Add Invoice",
-            });
-        })
-        .catch((err) => {
-            console.log(err);
-            res.status(500).json(err);
-        });
+    res.render("add-invoice", {
+        // company,
+        logged_in: true,
+        title: "Add Invoice",
+    });
+
 });
 // Front End route for one Company
 router.get("/company/:id", (req, res) => {

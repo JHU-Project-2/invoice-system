@@ -5,6 +5,7 @@ const Address = require('./Address');
 const Project = require('./Project');
 const Invoice = require('./Invoice');
 const Item = require('./Item');
+const Sent = require('./Sent');
 const BillingAddress = require('./BillingAddress');
 
 
@@ -54,5 +55,10 @@ Address.belongsTo(Company, {
     onDelete: "cascade",
 })
 
+User.hasMany(Sent, {
 
-module.exports = { User, Company, Contact, Address, Project, Invoice, Item, BillingAddress };
+    foreignKey: "user_id",
+    onDelete: "cascade"
+})
+
+module.exports = { User, Company, Contact, Address, Project, Invoice, Item, BillingAddress, Sent };
