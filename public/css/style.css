@@ -81,6 +81,10 @@ ul {
   padding: 15px;
 }
 
+.hide {
+  display: none !important;
+}
+
 @media (max-width: 576px) {
   .mobile-nav {
     display: block;

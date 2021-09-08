@@ -14,10 +14,10 @@ closeBtn.addEventListener("click", () => {
         document.getElementById("main").style.marginLeft = "80px";
     }
 
-    menuBtnChange();//calling the function(optional)
+    menuBtnChange();
 });
 
-// following are the code to change sidebar button(optional)
+// following is the code to change sidebar button(optional)
 function menuBtnChange() {
     if (sidebar.classList.contains("open")) {
         //  menuText.classList.replace("menu-text show");

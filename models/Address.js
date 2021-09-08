@@ -13,21 +13,19 @@ Address.init(
         },
         address_1: {
             type: DataTypes.STRING,
-            allowNull: false,
         },
         address_2: {
             type: DataTypes.STRING,
         },
         city: {
             type: DataTypes.STRING,
-            allowNull: false,
         },
         state: {
             type: DataTypes.STRING,
-            allowNull: false,
         },
         zip_code: {
             type: DataTypes.INTEGER,
+            defaultValue: 00000,
             allowNull: false,
         },
         company_id: {

@@ -1,21 +1,28 @@
-
 let companies = document.querySelector('.companies')
 let companyCard = document.querySelector('.all-companies')
 let contactCard = document.querySelector('.all-contacts')
 let welcome = document.querySelector('.welcome')
+let welcomeBtn = document.querySelector('.welcomeBtn')
+let regularAddCompanyBtn = document.querySelector('.regularAddCompanyBtn')
 
+console.log(companies.childElementCount)
 
 if (companies.childElementCount === 0) {
     companyCard.setAttribute('style', 'display:none;')
     contactCard.setAttribute('style', 'display:none;')
     welcome.setAttribute('style', 'display: block')
+    welcomeBtn.setAttribute('style', 'display: block')
+    regularAddCompanyBtn.setAttribute('style', 'display: none')
 
-} else (
-    companyCard.setAttribute('style', 'display:block;'),
-    contactCard.setAttribute('style', 'display:block;'),
-    welcome.setAttribute('style', 'display: none')
+} if (companies.childElementCount > 0) {
 
-)
+    regularAddCompanyBtn.setAttribute('style', 'display: block')
+    companyCard.setAttribute('style', 'display:block;')
+    contactCard.setAttribute('style', 'display:block;')
+    welcome.setAttribute('style', 'display: none;')
+    welcomeBtn.setAttribute('style', 'display: none;')
+
+}
 
 document.addEventListener("DOMContentLoaded", function (event) {
     const showNavbar = (toggleId, navId, bodyId, headerId) => {
