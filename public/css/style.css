@@ -85,6 +85,10 @@ ul {
   display: none !important;
 }
 
+.welcome {
+  transition: all 0.5s ease;
+}
+
 @media (max-width: 576px) {
   .mobile-nav {
     display: block;

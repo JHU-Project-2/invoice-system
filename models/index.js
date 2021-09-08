@@ -60,5 +60,9 @@ User.hasMany(Sent, {
     foreignKey: "user_id",
     onDelete: "cascade"
 })
+Invoice.hasMany(Sent, {
+    foreignKey: "invoice_id",
+    onDelete: "cascade"
+})
 
 module.exports = { User, Company, Contact, Address, Project, Invoice, Item, BillingAddress, Sent };

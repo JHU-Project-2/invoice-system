@@ -1,6 +1,9 @@
 const form = document.querySelector("#send-email-form");
 let invoiceData = []
 
+const invoice_id = window.location.toString().split("/")[
+  window.location.toString().split("/").length - 1
+];
 
 
 async function sendEmail(event) {
@@ -23,7 +26,8 @@ async function sendEmail(event) {
         from: from.value,
         subject: subject.value,
         text: message.value,
-        html: invoiceData
+        html: invoiceData,
+        invoice_id
 
 
       }),
