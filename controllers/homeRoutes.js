@@ -24,7 +24,7 @@ router.get('/', async (req, res) => {
     // render the homepage handlebars
     res.render('homepage', {
       // pass in the sanitized data as compainies
-      companies,      
+      companies,
       logged_in: req.session.logged_in,
       title: "Home"
     });
@@ -63,7 +63,7 @@ router.get('/signup', (req, res) => {
   });
 });
 // route for /profile
-router.get('/profile', async (req, res) => {
+router.get('/profile', withAuth, async (req, res) => {
   try {
     // This line of code only pulls data for the user that is logged-in
     const userData = await User.findAll({
@@ -85,7 +85,7 @@ router.get('/profile', async (req, res) => {
   }
 });
 // route for sent invoices
-router.get('/sent-invoices', async (req, res) => {
+router.get('/sent-invoices', withAuth, async (req, res) => {
   try {
     // Get all projects and JOIN with user data
     const sentData = await Sent.findAll({
