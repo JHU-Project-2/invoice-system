@@ -28,19 +28,15 @@ function getTotal() {
 async function deleteItem(itemId) {
 
     console.log("item id: ", itemId)
-
     const response = await fetch(`/api/item/${itemId}`, {
-
         method: 'DELETE',
         body: JSON.stringify({
             itemId
         }),
         headers: {
             'Content-Type': 'application/json'
-
         }
     });
-
     if (response.ok) {
         // document.location.replace(`/dashboard/invoice/${invoice_id}`);
         document.location.reload();
@@ -50,13 +46,12 @@ async function deleteItem(itemId) {
 }
 
 getTotal()
-// deleteBtn.addEventListener('click', deleteItem)
+
 document.querySelector("#invoice-table").addEventListener('click', event => {
     if (event.target.classList.contains('delete-item-btn')) {
         event.preventDefault();
         let itemId = event.target.getAttribute("data-item-id")
         deleteItem(itemId)
     }
-
 })
 
