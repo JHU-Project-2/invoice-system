@@ -15,9 +15,7 @@ async function addInvoiceFormHandler(event) {
   const project_id = window.location.toString().split("/")[
     window.location.toString().split("/").length - 1
   ];
-  const invoice_id = window.location.toString().split("/")[
-    window.location.toString().split("/").length + 1
-  ];
+
 
   // check if checkbox is checked and return true or false
   // 
@@ -36,7 +34,6 @@ async function addInvoiceFormHandler(event) {
     body: JSON.stringify({
       // isPaid,
       due_date,
-
       project_id,
       companyName,
       address_1,
@@ -44,13 +41,7 @@ async function addInvoiceFormHandler(event) {
       city,
       state,
       zipCode,
-      invoice_id,
-
       invoiceName
-
-
-
-
     }),
     headers: {
       "Content-Type": "application/json",
