@@ -1,12 +1,4 @@
 <h1>Sent Invoices</h1>
-
-
-
-
-
-
-
-
 <table class="table table-hover">
     <thead>
         <tr>
@@ -19,7 +11,7 @@
     <tbody>
         {{#each sent}}
             <tr>
-                <th scope="row">{{id}}</th>
+                <th scope="row">{{user_id}}</th>
                 <td>{{sent_by}}</td>
                 <td><a href="/dashboard/invoice/{{invoice_id}}">{{invoice_id}}</a></td>
                 <td>{{sent_to_email}}</td>
