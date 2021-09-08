@@ -8,12 +8,13 @@ const withAuth = require("../utils/auth");
 // Front End route for dashboard
 router.get('/', withAuth, async (req, res) => {
     try {
-        // Get all projects and JOIN with user data
+        // Get all compainies
         const companyData = await Company.findAll({
             // gets all companies owned by the logged in user
             where: {
                 user_id: req.session.user_id,
             },
+            // join company data with associated address and contact
             include: [
                 {
                     model: Address,
@@ -98,6 +99,7 @@ router.get('/add-company', withAuth, async (req, res) => {
 });
 // Front End route for add Project
 router.get('/add-project/:id', (req, res) => {
+    // use the current company for the project we are about to add
     Company.findOne({
         where: {
             id: req.params.id,
@@ -106,6 +108,7 @@ router.get('/add-project/:id', (req, res) => {
             "id",
             "name"
         ],
+        // and join with all associated data with the database
         include: [
             {
                 model: Address,
@@ -179,7 +182,7 @@ router.get('/add-project/:id', (req, res) => {
         });
 });
 
-// Front End route for add invoice
+// Front End route for add invoice form 
 router.get('/add-invoice/:id', (req, res) => {
     res.render("add-invoice", {
         // company,
