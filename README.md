@@ -1,41 +1,40 @@
 # Arpad | Invoicing System
 
-## Table of Contents
+![License](https://img.shields.io/badge/License-MIT-blue.svg "License Badge")
 
 ## User Story
 
-	As a business owner
-	I WANT a way to keep track of my company's invoices
-	
+    As a business owner
+    I WANT a way to keep track of my company's invoices
+
 ## Description
 
-
-## Installation Instructions
-
-1. Install dependencies `npm install`
-2. 
-2. 
-
-
-
-
-## Usage Instructions
-
+This web app can manage and send invoices from the interface. Users can manage projects, clients and invoices all from an easy to use interface
 
 ## Demo Video
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/SsjCEMJn_Is" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Screenshots
 
 #### Homepage
+
 ![Homepage](./assets/screenshots/homepage.png)
+
 #### Dashboard
+
 ![Dashboard](./assets/screenshots/dashboard.png)
+
 #### Company
+
 ![Company](./assets/screenshots/company.png)
+
 #### Project
+
 ![Project](./assets/screenshots/project.png)
+
 #### Invoice
+
 ![Invoice](./assets/screenshots/invoice.png)
 
 ## Technologies
@@ -58,12 +57,8 @@
 [Troy Bohrer](https://github.com/troybohrer8)
 [Andrew Keiser](https://github.com/webdev410)
 
-
-
 ## Links
-
 
 [Repo](https://github.com/JHU-Project-2/invoice-system)
 
 [Deployed](https://invoice.technology)
-
