@@ -8,7 +8,6 @@ const helpers = require('./utils/helpers');
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
-
 // initializing the application using express
 const app = express();
 
