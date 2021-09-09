@@ -27,6 +27,17 @@
 
 ## Screenshots
 
+#### Homepage
+![Homepage](./assets/screenshots/homepage.png)
+#### Dashboard
+![Dashboard](./assets/screenshots/dashboard.png)
+#### Company
+![Company](./assets/screenshots/company.png)
+#### Project
+![Project](./assets/screenshots/project.png)
+#### Invoice
+![Invoice](./assets/screenshots/invoice.png)
+
 ## Technologies
 
 -   [Node.JS](https://nodejs.org/en/docs/)
