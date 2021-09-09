@@ -61,4 +61,4 @@ This web app can manage and send invoices from the interface. Users can manage p
 
 [Repo](https://github.com/JHU-Project-2/invoice-system)
 
-[Deployed](https://invoice.technology)
+[Deployed](https://invoice-machine.herokuapp.com)
