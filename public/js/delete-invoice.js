@@ -7,9 +7,9 @@ async function deleteInvoiceHandler(event) {
     console.log(invoice_id)
     const response = await fetch(`/api/invoice/${invoice_id}`, {
 
-        method: 'PUT',
+        method: 'DELETE',
         body: JSON.stringify({
-            archived: true
+
         }),
         headers: {
             'Content-Type': 'application/json'

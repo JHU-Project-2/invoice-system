@@ -6,6 +6,7 @@ let invoiceTotal = document.querySelector('.invoice-total')
 let lineTotal;
 let totalArray = [];
 
+let archiveBtn = document.querySelector('.archiveBtn')
 let deleteBtn = document.querySelector('.delete-item-btn')
 let paidBtn = document.querySelector('.paidBtn')
 let paidBadge = document.querySelector('.paid')
@@ -26,7 +27,6 @@ function getTotal() {
     invoiceTotal.append(totalSum)
     console.log("Invoice Total: ", totalSum)
 }
-
 async function deleteItem(itemId) {
 
     console.log("item id: ", itemId)
@@ -46,7 +46,6 @@ async function deleteItem(itemId) {
         alert(response.statusText);
     }
 }
-
 async function markPaid(event) {
     event.preventDefault();
 
@@ -67,24 +66,52 @@ async function markPaid(event) {
     });
 
     if (response.ok) {
-
+        alert('invoice marked as paid')
         document.location.replace(`/dashboard/invoice/${id}`);
     } else {
         alert(response.statusText);
     }
-    handleBadges()
+
+
+}
+async function markArchived(event) {
+    event.preventDefault();
+
+    const id = window.location.toString().split('/')[
+        window.location.toString().split('/').length - 1
+
+    ];
+
+    const response = await fetch(`/api/invoice/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+            archived: true,
+        }),
+
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    if (response.ok) {
+        alert("invoice marked as archived")
+
+        document.location.replace(`/dashboard/invoice/${id}`);
+
+    } else {
+        alert(response.statusText);
+    }
+
 
 }
 
-function handleBadges() {
-    paidBadge.classList.remove('hide')
-    unpaidBadge.classList.add('hide')
-}
+
 
 getTotal()
 
-deleteBtn.addEventListener('click', handleBadges)
 
+archiveBtn.addEventListener('click', markArchived)
+paidBtn.addEventListener('click', markPaid)
 
 document.querySelector("#invoice-table").addEventListener('click', event => {
     if (event.target.classList.contains('delete-item-btn')) {
