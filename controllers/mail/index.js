@@ -30,7 +30,7 @@ router.post('/send', (req, res) => {
         from: req.body.from,
         to: req.body.to,
         subject: req.body.subject,
-        text: req.body.text,
+        text: req.body.message,
         html: output,
         // html: template(),
     };

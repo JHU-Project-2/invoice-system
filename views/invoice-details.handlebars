@@ -11,15 +11,15 @@
 
 <div class="email-content">
 
-    <h1>Invoice Details</h1>
+
     {{!-- this is where the actual invoice template will go --}}
     <div class="row justify-content-between">
         {{!-- Billing Details --}}
         <div class="card ">
-            <div class="card-header">
+            <div class="card-header billing-header">
                 <h3>Bill To:</h3>
             </div>
-            <div class="card-body">
+            <div class="card-body billing-body">
                 <h4 class="mb-4">{{invoice.BillingAddress.company_name}} </h4>
                 {{invoice.BillingAddress.address_1}}, {{invoice.BillingAddress.address_2}}</p>
                 <p>{{invoice.BillingAddress.city}}, {{invoice.BillingAddress.state}} {{invoice.BillingAddress.zip_code}}
@@ -27,11 +27,12 @@
             </div>
         </div>
         <div class="card ">
-            <div class="card-header d-flex justify-content-between">
+            <div class="card-header d-flex justify-content-between invoice-header">
+                <h2>Invoice Details</h2>
                 <p>{{invoice.name}}</p>
                 <p>Invoice: {{invoice.id}}</p>
             </div>
-            <div class="card-body">
+            <div class="card-body invoice-body">
                 <h6>Pay By: </h6>
                 <p>{{format_date invoice.BillingAddress.pay_by}}</p>
 
@@ -51,7 +52,7 @@
 
     <table id="invoice-table" class="table">
         <thead>
-            <tr>
+            <tr class="table-header">
                 <th scope="col">Description</th>
                 <th scope="col">Units</th>
                 <th scope="col">Unit Price ($)</th>

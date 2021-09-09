@@ -1,17 +1,39 @@
+// declare send email form
 const form = document.querySelector("#send-email-form");
+// create empty array to add HTML from invoice page
 let invoiceData = []
-
+// get the invoice ID via the web address bar
 const invoice_id = window.location.toString().split("/")[
   window.location.toString().split("/").length - 1
 ];
 
+function hideButtons() {
+  //  grab all buttons
+  let buttons = document.getElementsByTagName('button')
+  // console.log(buttons.length)
+
+  // hide all buttons except those in the modal
+  for (var i = 0; i < 6; i++) {
+    buttons[i].classList.add('hide')
+  }
+}
+
+
 
 async function sendEmail(event) {
   event.preventDefault();
+  // declaring each invoice element for the email
+  // let htmlData = document.querySelector('.email-content').innerHTML
+  let billingHeader = document.querySelector('.billing-header')
+  let billingBody = document.querySelector('.billing-body')
+  let invoiceHeader = document.querySelector('.invoice-header')
+  let invoiceBody = document.querySelector('.invoice-body')
+  let entireTable = document.querySelector('#invoice-table')
+  let tableHeader = document.querySelector('.table-header')
 
-  let htmlData = document.querySelector('.email-content').innerHTML
 
-  invoiceData.push(htmlData)
+
+  invoiceData.push(billingHeader.innerHTML + billingBody.innerHTML + invoiceHeader.innerHTML + entireTable.innerHTML)
 
   var to = document.getElementById("to");
   var from = document.getElementById("from");
@@ -47,6 +69,7 @@ async function sendEmail(event) {
 
 
 
+document.querySelector('.send-invoice').addEventListener("click", hideButtons)
 
 
 document
