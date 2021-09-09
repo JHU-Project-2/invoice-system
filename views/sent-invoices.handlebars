@@ -6,6 +6,8 @@
             <th scope="col">Sent By</th>
             <th scope="col">Invoice ID</th>
             <th scope="col">Sent To</th>
+            <th scope="col">Subject</th>
+            <th scope="col">Message</th>
         </tr>
     </thead>
     <tbody>
@@ -15,6 +17,8 @@
                 <td>{{sent_by}}</td>
                 <td><a href="/dashboard/invoice/{{invoice_id}}">{{invoice_id}}</a></td>
                 <td>{{sent_to_email}}</td>
+                <td>{{subject}}</td>
+                <td>{{message}}</td>
             </tr>
         {{/each}}
 

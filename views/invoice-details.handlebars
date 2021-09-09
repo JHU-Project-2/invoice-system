@@ -2,14 +2,18 @@
 <div class="mb-2">
 
 
-    <button type="button" class="btn btn-sm btn-primary delete-invoice-btn"><i class="fas fa-trash-alt mr-2"></i>Delete
-        Invoice</button>
+    <button type="button" class="btn btn-sm btn-primary delete-invoice-btn">
+        <i class="fas fa-trash-alt mr-2"></i>
+        Delete Invoice</button>
     <button type="button" class="btn btn-sm btn-primary send-invoice" data-toggle="modal" data-target="#emailModal">
         <i class="fas fa-paper-plane mr-2"></i>Send Invoice
     </button>
+    <button type="button" class="btn btn-sm btn-primary export-pdf">
+        <i class="fas fa-file-download mr-2"></i>Export PDF
+    </button>
 </div>
 
-<div class="email-content">
+<div class="email-content" id="invoice">
 
 
     {{!-- this is where the actual invoice template will go --}}
@@ -85,3 +89,4 @@
 {{projectInvoice}}
 <script src="/js/invoice.js"></script>
 <script src="/js/delete-invoice.js"></script>
+<script src="/js/export-pdf.js"></script>

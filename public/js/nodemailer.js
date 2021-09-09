@@ -7,19 +7,17 @@ const invoice_id = window.location.toString().split("/")[
   window.location.toString().split("/").length - 1
 ];
 
+
 function hideButtons() {
   //  grab all buttons
   let buttons = document.getElementsByTagName('button')
   // console.log(buttons.length)
 
   // hide all buttons except those in the modal
-  for (var i = 0; i < 6; i++) {
+  for (var i = 0; i < 7; i++) {
     buttons[i].classList.add('hide')
   }
 }
-
-
-
 async function sendEmail(event) {
   event.preventDefault();
   // declaring each invoice element for the email
@@ -35,20 +33,20 @@ async function sendEmail(event) {
 
   invoiceData.push(billingHeader.innerHTML + billingBody.innerHTML + invoiceHeader.innerHTML + entireTable.innerHTML)
 
-  var to = document.getElementById("to");
-  var from = document.getElementById("from");
-  var subject = document.getElementById("subject");
-  var message = document.getElementById("message");
+  var to = document.getElementById("to").value;
+  var from = document.getElementById("from").value;
+  var subject = document.getElementById("subject").value;
+  var message = document.getElementById("message").value;
 
   if (to && from && subject) {
     const response = await fetch("/mail/send", {
       method: "POST",
       body: JSON.stringify({
-        to: to.value,
-        from: from.value,
-        subject: subject.value,
-        text: message.value,
-        html: invoiceData,
+        to,
+        from,
+        subject,
+        message,
+        invoiceData,
         invoice_id
 
 
@@ -60,21 +58,31 @@ async function sendEmail(event) {
 
     if (response.ok) {
       alert("'Email sent successfully!");
-      // document.location.reload(`/dashboard/invoice/${id}`);
+      document.location.reload(`/dashboard/invoice/${invoice_id}`);
     } else {
       alert("Error!" + response.statusText + ": Something went wrong 😬");
     }
   }
 }
 
+function exportPDF() {
+  hideButtons(),
+
+    window.print()
+
+}
 
 
-document.querySelector('.send-invoice').addEventListener("click", hideButtons)
 
 
 document
   .querySelector("#send-email-form")
   .addEventListener("submit", sendEmail);
+document
+  .querySelector(".export-pdf")
+  .addEventListener("click", exportPDF);
+
+
 
 
 

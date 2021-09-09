@@ -106,3 +106,32 @@ ul {
     display: none;
   }
 }
+
+@media print {
+  @page {
+    size: auto;
+    /* auto is the initial value */
+    margin: 0px;
+    /* this affects the margin in the printer settings */
+    width: 100%!important;
+  }
+  nav {
+    display: none;
+  }
+  button {
+    display: none;
+  }
+  .loggin_out {
+    display: none;
+  }
+  @media print {
+    header, footer, aside, form, … {
+      display: none;
+    }
+    article {
+      width: 100%!important;
+      padding: 0!important;
+      margin: 0!important;
+    }
+  }
+}

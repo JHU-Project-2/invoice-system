@@ -5,6 +5,9 @@ const fs = require('fs')
 const path = require('path');
 const { Sent } = require('../../models');
 
+
+
+
 // Node Mailer 
 router.post('/send', (req, res) => {
     // for using a template
@@ -12,7 +15,7 @@ router.post('/send', (req, res) => {
     // var template = Handlebars.compile(source);
 
     // EMAIL TEMPLATE
-    const output = `${req.body.html}`;
+    const output = `${req.body.invoiceData}`;
 
     // create reusable transporter object using the default SMTP transport
     const transporter = nodemailer.createTransport({
@@ -29,7 +32,7 @@ router.post('/send', (req, res) => {
     const mailOptions = {
         from: req.body.from,
         to: req.body.to,
-        subject: req.body.subject,
+        subject: `New Invoice from ${req.body.to}: ${req.body.subject}`,
         text: req.body.message,
         html: output,
         // html: template(),
@@ -49,7 +52,9 @@ router.post('/send', (req, res) => {
         user_id: req.session.user_id,
         invoice_id: req.body.invoice_id,
         sent_to_email: req.body.to,
-        sent_by: req.session.username
+        sent_by: req.session.username,
+        subject: req.body.subject,
+        message: req.body.message
     })
         .then(sentData => res.json(sentData))
         .catch(err => {

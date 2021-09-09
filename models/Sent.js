@@ -17,6 +17,12 @@ Sent.init(
         sent_by: {
             type: DataTypes.STRING,
         },
+        subject: {
+            type: DataTypes.STRING,
+        },
+        message: {
+            type: DataTypes.STRING,
+        },
         invoice_id: {
             type: DataTypes.INTEGER,
             references: {
