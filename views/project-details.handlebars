@@ -1,10 +1,10 @@
 {{!-- CRUD MENU --}}
 <div class="card-header mb-2">
+    <a class="btn btn-sm btn-danger delete-project-btn mb-2" data-project-id="{{project.id}}">
+        <i class="fas fa-trash-alt mr-2"></i>Delete Project
+    </a>
     <a href="/dashboard/add-invoice/{{project.id}}">
         <button class="btn btn-sm btn-primary add-invoice mb-2"><i class="fas fa-plus mr-2"></i>Add Invoice</button>
-    </a>
-    <a class="btn btn-sm btn-primary delete-project-btn mb-2" data-project-id="{{project.id}}">
-        <i class="fas fa-trash-alt mr-2"></i>Delete Project
     </a>
 
 
@@ -36,3 +36,4 @@
 
     <script src="/js/delete-project.js"></script>
     <script src="/js/add-invoice.js"></script>
+    <script src="/js/archive-invoice.js"></script>

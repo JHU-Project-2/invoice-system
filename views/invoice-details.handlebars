@@ -2,7 +2,7 @@
 <div class="mb-2">
 
 
-    <button type="button" class="btn btn-sm btn-primary delete-invoice-btn">
+    <button type="button" class="btn btn-sm btn-danger delete-invoice-btn">
         <i class="fas fa-trash-alt mr-2"></i>
         Delete Invoice</button>
     <button type="button" class="btn btn-sm btn-primary send-invoice" data-toggle="modal" data-target="#emailModal">
@@ -10,6 +10,9 @@
     </button>
     <button type="button" class="btn btn-sm btn-primary export-pdf">
         <i class="fas fa-file-download mr-2"></i>Export PDF
+    </button>
+    <button type="button" class="btn btn-sm btn-success paidBtn">
+        <i class="far fa-money-bill-alt mr-2"></i>Mark Paid
     </button>
 </div>
 
@@ -72,7 +75,7 @@
                     <td class="ppu">{{unit_price}}</td>
                     <td class="total"></td>
                     <td>
-                        <button class="btn btn-sm btn-primary delete-item-btn" data-item-id="{{id}}">
+                        <button class="btn btn-sm btn-danger delete-item-btn" data-item-id="{{id}}">
                             Delete
                         </button>
                     </td>
@@ -83,6 +86,13 @@
     </table>
 
 </div>
+
+<div class="paid-badges">
+    <img class="hide" id="unpaid" src="/img/unpaid.png" alt="unpaid">
+    <img class="hide" id="paid" src="/img/paid.png" alt="paid">
+</div>
+
+
 {{>send-email}}
 
 {{>add-item}}

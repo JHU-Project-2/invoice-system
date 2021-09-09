@@ -1,12 +1,12 @@
 {{! CRUD MENU }}
 <div class="card-header mb-2">
 
+  <button class="btn btn-sm btn-danger delete-company-btn" data-company-id="{{company.id}}">
+    <i class="fas fa-trash-alt mr-2"></i>Delete Company</button>
   <a class="btn btn-sm btn-primary edit-company-btn" href="/dashboard/edit/{{company.id}}">
     <i class="fas fa-edit mr-2"></i>Edit Company
   </a>
 
-  <button class="btn btn-sm btn-primary delete-company-btn" data-company-id="{{company.id}}">
-    <i class="fas fa-trash-alt mr-2"></i>Delete Company</button>
 
   <a href="/dashboard/add-project/{{company.id}}">
     <button class="btn btn-sm btn-primary"><i class="fas fa-plus mr-2"></i>Add Project</button>

@@ -1,20 +1,23 @@
-async function deleteInvoiceHandler(event) {
+async function hideArchivedInvoice(event) {
     event.preventDefault();
 
-    const invoice_id = window.location.toString().split("/")[
+    const project_id = window.location.toString().split("/")[
         window.location.toString().split("/").length - 1
     ];
     console.log(invoice_id)
-    const response = await fetch(`/api/invoice/${invoice_id}`, {
+    const response = await fetch(`/api/invoice/${project_id}`, {
 
-        method: 'PUT',
+        method: 'GET',
         body: JSON.stringify({
-            archived: true
         }),
         headers: {
             'Content-Type': 'application/json'
         }
     });
+
+    if (archived = true) {
+        console.log('TRUEEEEEE')
+    }
 
     if (response.ok) {
 
@@ -25,5 +28,5 @@ async function deleteInvoiceHandler(event) {
 }
 
 
-
-document.querySelector('.delete-invoice-btn').addEventListener('click', deleteInvoiceHandler);
+// get all invoices in the project and check archived boolean
+// if true, hide

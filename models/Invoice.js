@@ -21,6 +21,12 @@ Invoice.init(
             defaultValue: false,
             allowNull: false
         },
+        archived: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
+            allowNull: false
+
+        },
         due_date: {
             type: DataTypes.DATE,
         },

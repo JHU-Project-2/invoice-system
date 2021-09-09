@@ -7,6 +7,9 @@ let lineTotal;
 let totalArray = [];
 
 let deleteBtn = document.querySelector('.delete-item-btn')
+let paidBtn = document.querySelector('.paidBtn')
+let paidBadge = document.querySelector('.paid')
+let unpaidBadge = document.querySelector('.unpaid')
 
 
 function getTotal() {
@@ -24,7 +27,6 @@ function getTotal() {
     console.log("Invoice Total: ", totalSum)
 }
 
-// works but can only delete the first item
 async function deleteItem(itemId) {
 
     console.log("item id: ", itemId)
@@ -45,7 +47,44 @@ async function deleteItem(itemId) {
     }
 }
 
+async function markPaid(event) {
+    event.preventDefault();
+
+    const id = window.location.toString().split('/')[
+        window.location.toString().split('/').length - 1
+
+    ];
+
+    const response = await fetch(`/api/invoice/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+            isPaid: true,
+        }),
+
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    if (response.ok) {
+
+        document.location.replace(`/dashboard/invoice/${id}`);
+    } else {
+        alert(response.statusText);
+    }
+    handleBadges()
+
+}
+
+function handleBadges() {
+    paidBadge.classList.remove('hide')
+    unpaidBadge.classList.add('hide')
+}
+
 getTotal()
+
+deleteBtn.addEventListener('click', handleBadges)
+
 
 document.querySelector("#invoice-table").addEventListener('click', event => {
     if (event.target.classList.contains('delete-item-btn')) {

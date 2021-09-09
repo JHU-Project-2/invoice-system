@@ -117,7 +117,31 @@ router.delete('/:id', async (req, res) => {
         res.status(500).json(err);
     }
 });
+// UPDATE INVOICE
+router.put('/:id', (req, res) => {
+    //Calls the update method on the Invoice model
+    Invoice.update(
+        {
+            // All the fields you can update and the data attached to the request body.
+            archived: req.body.archived,
+            is_paid: req.body.isPaid
 
+        },
+        {
+            // Gets a book based on the book_id given in the request parameters
+            where: {
+                id: req.params.id,
+            },
+        }
+    )
+        .then((updatedInvoice) => {
+            res.json(updatedInvoice);
+        })
+        .catch((err) => {
+            console.log(err);
+            res.json(err);
+        });
+});
 
 
 module.exports = router;
